@@ -1,6 +1,7 @@
 import React from "react";
 import Logo from "../../images/Logo.png";
 import Form from "./Form";
+import './Login.css'
 
 function Login() {
   return (
