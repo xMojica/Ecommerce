@@ -7,7 +7,7 @@ function Login() {
   return (
     <>
       <div className="divcontenedor">
-        <Form comp={"login"} />
+        <Form />
         <img id="logo" src={Logo} alt="Logo" width="600px" />
       </div>
     </>

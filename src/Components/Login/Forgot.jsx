@@ -6,48 +6,44 @@ function Forgot() {
   const navigate = useNavigate();
   const messageRef = useRef(null);
   const [password, setPassword] = useState("");
-  const [user, setUser] = useState("");
+  const [email, setEmail] = useState("");
+  const [mensaje, setmensaje] = useState("");
+
+
+  function mostrarMensaje(men) {
+    setmensaje(men);
+    document.getElementById("mensaje").style.display = "block";
+    document.getElementById("mensaje").classList.add("animacion");
+    setTimeout(function () { document.getElementById("mensaje").style.display = "none"; }, 4000);
+  }
 
   function handleClick(e) {
     e.preventDefault();
-    console.log(user);
+    console.log(email);
     console.log(password);
-    // let user = {};
+    mostrarMensaje("Password changed successfully")
+    setTimeout(function () { navigate('/') }, 4000);
+
+    // let cliente = {};
     // axios
-    //   .get(`https://sadimi-eoya.onrender.com/api/employee/${user}`)
+    //   .get(`https://sadimi-eoya.onrender.com/api/employee/${email}`)
     //   .then((response) => {
-    //     user = response.data;
-    //     user.password = password;
+    //     cliente = response.data;
+    //     cliente.password = password;
 
     //   axios
     //     .patch(
-    //       `https://sadimi-eoya.onrender.com/api/employee/${user}`,
-    //       user
-    //     )
+    //       `https://sadimi-eoya.onrender.com/api/employee/${user}`,user)
     //     .then(() => {
-    //       document.getElementById("mensaje2").style.display = "block";
-    //       document.getElementById("mensaje2").classList.add("animacion");
-    //       setTimeout(function () {
-    //         document.getElementById("mensaje2").style.display = "none";
-    //         navigate("/");
-    //       }, 5000);
+    //       mostrarMensaje("Password changed successfully")
+    //        setTimeout(function () { navigate('/') }, 4000);
     //     })
     //     .catch((e) => {
-    //       console.log("No se pudo cambiar la contraseña: Error" + e);
-    //       document.getElementById("mensaje").style.display = "block";
-    //       document.getElementById("mensaje").classList.add("animacion");
-    //       setTimeout(function () {
-    //         document.getElementById("mensaje").style.display = "none";
-    //       }, 4000);
+    //       mostrarMensaje("We couldn't change the password at this time, please try again later")
     //     });
     // })
     // .catch(() => {
-    //   console.log("El usuario ingresado no existe");
-    //   document.getElementById("mensaje").style.display = "block";
-    //   document.getElementById("mensaje").classList.add("animacion");
-    //   setTimeout(function () {
-    //     document.getElementById("mensaje").style.display = "none";
-    //   }, 4000);
+    //   mostrarMensaje("Email does not exist")
     // });
   }
 
@@ -72,7 +68,7 @@ function Forgot() {
               placeholder="Email"
               className="input-field"
               type="text"
-              onChange={(e) => { setUser(e.target.value) }}
+              onChange={(e) => { setEmail(e.target.value) }}
             />
           </div>
           <div className="field">
@@ -109,13 +105,10 @@ function Forgot() {
             </button>
           </div>
           <p ref={messageRef} id="mensaje" style={{ display: "none" }}>
-            Invalid username
-          </p>
-          <p ref={messageRef} id="mensaje2" style={{ display: "none" }}>
-            Password change successful
+            {mensaje}
           </p>
         </form>
-        <img id="logo" src={Logo} alt="Logo" width="480px" />
+        <img id="logo" src={Logo} alt="Logo" width="600px" />
       </div>
     </>
   );

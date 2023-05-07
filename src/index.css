@@ -4,8 +4,8 @@
     --tertiaryColor: #9bd1fd;
     --cuaternaryColor: #84c1f3;
     --blackColor:#111010;
-    background-color: var(--blackColor);
-    font-family: 'Roboto';
+    background-color: #2e3436;
+    font-family: 'Tw Cen MT';
   }
 
 code {

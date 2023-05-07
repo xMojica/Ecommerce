@@ -8,35 +8,35 @@ function Form() {
   const [email, setEmail] = useState("");
   const navigate = useNavigate();
   const messageRef = useRef(null);
+  const [mensaje, setmensaje] = useState("Soy el mensaje de prueba de error");
+
+  function mostrarMensaje(men) {
+    setmensaje(men);
+    document.getElementById("mensaje").style.visibility = "visible";
+    setTimeout(function () { document.getElementById("mensaje").style.visibility = "hidden"; }, 4000);
+  }
 
   function handleClick(e) {
     e.preventDefault();
     console.log(password);
     console.log(email);
-    // navigate('/Home');
+    mostrarMensaje()
+
     // axios
-    //   .get(`https://randomuser.me/api/`)
+    //   .get(``)
     //   .then((response) => {
     //     if (
     //       response.data.password === password &&
-    //       response.data.username === user
+    //       response.data.email === email
     //     ) {
-    //       sessionStorage.setItem("user", JSON.stringify(response.data));
+    //       sessionStorage.setItem("email", JSON.stringify(response.data));
     //       navigate("/home");
     //     } else {
-    //       document.getElementById("mensaje").style.display = "block";
-    //       document.getElementById("mensaje").classList.add("animacion");
-    //       setTimeout(function () {
-    //         document.getElementById("mensaje").style.display = "none";
-    //       }, 4000);
+    //       mostrarMensaje("Invalid credentials");
     //     }
     //   })
     //   .catch(() => {
-    //     document.getElementById("mensaje").style.display = "block";
-    //     document.getElementById("mensaje").classList.add("animacion");
-    //     setTimeout(function () {
-    //       document.getElementById("mensaje").style.display = "none";
-    //     }, 4000);
+    //     mostrarMensaje("Invalid credentials");
     //   });
   }
 
@@ -90,16 +90,14 @@ function Form() {
       </div>
       <div className="btn">
         <button
-          onClick={() => {
-            navigate("/forgot");
-          }}
+          onClick={() => { navigate("/forgot") }}
           className="button3"
         >
           Forgot Password
         </button>
       </div>
-      <p ref={messageRef} id="mensaje" style={{ display: "none" }}>
-        Invalid username or password!
+      <p ref={messageRef} id="mensaje">
+        {mensaje}
       </p>
     </form>
   );

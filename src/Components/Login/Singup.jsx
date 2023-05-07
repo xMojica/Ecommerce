@@ -1,24 +1,36 @@
 import { useNavigate } from 'react-router-dom';
-import { React, useRef, useState } from "react";
+import { React, useState } from "react";
 import Logo from "../../images/Logo.png";
 
 function Singup() {
     const navigate = useNavigate();
-    const messageRef = useRef(null);
     const [password, setPassword] = useState("");
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [contact, setContact] = useState("");
     const [cliente, setCliente] = useState({});
+    const [mensaje, setmensaje] = useState("Holaaa");
 
-    function handleclick() {
+    function mostrarMensaje(men) {
+        setmensaje(men);
+        document.getElementById("mensaje").style.visibility = "visible";
+        setTimeout(function () { document.getElementById("mensaje").style.visibility = "hidden"; }, 4000);
+    }
+
+    function handleclick(e) {
+        e.preventDefault();
 
         setCliente({
             name: name,
+            contact: contact,
             email: email,
             password: password,
-            contact: contact
         });
+
+        /*    
+            ! Hace falta hacer una peticion get antes de hacer el post para verificar que el correo no exista
+        */
+
         sessionStorage.setItem("cliente", JSON.stringify(cliente));
         navigate('/Home')
 
@@ -106,7 +118,7 @@ function Singup() {
                             onChange={(e) => { setPassword(e.target.value) }}
                         />
                     </div>
-
+                    <p id="note">Note: All fields are required</p>
                     <div className="btn">
                         <button className="button1" onClick={handleclick}>
                             Register
@@ -115,20 +127,21 @@ function Singup() {
                     <div className="btn">
                         <button
                             className="button1"
-                            onClick={() => { navigate("/") }}
+                            // onClick={() => { navigate("/") }}
+                            onClick={(e) => {
+                                e.preventDefault();
+                                mostrarMensaje("Pruebaa");
+                            }}
                         >
                             Back
                         </button>
                     </div>
-                    <p ref={messageRef} id="mensaje" style={{ display: "none" }}>
-                        Invalid username
+                    <p id="mensaje">
+                        {mensaje}
                     </p>
-                    <p ref={messageRef} id="mensaje2" style={{ display: "none" }}>
-                        Successfully registered
-                    </p>
-                </form>
-                <img id="logo" src={Logo} alt="Logo" width="480px" />
-            </div>
+                </form >
+                <img id="logo" src={Logo} alt="Logo" width="600px" />
+            </div >
         </>
     );
 }
