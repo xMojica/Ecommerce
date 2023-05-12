@@ -62,5 +62,5 @@ main {
 }
 
 .product:hover .overview {
-    transform: translateY(12%);
+    transform: translateY(5%);
 } 

@@ -9,17 +9,17 @@ function Singup() {
     const [email, setEmail] = useState("");
     const [contact, setContact] = useState("");
     const [cliente, setCliente] = useState({});
-    // const [mensaje, setmensaje] = useState("Incorrect credentials !");
+    const [mensaje, setmensaje] = useState("");
 
-    // function mostrarMensaje(men) {
-    //     setmensaje(men);
-    //     document.getElementById("mensaje").style.visibility = "visible";
-    //     setTimeout(function () { document.getElementById("mensaje").style.visibility = "hidden"; }, 4000);
-    // }
+    function mostrarMensaje(men) {
+        setmensaje(men);
+        document.getElementById("mensaje").style.visibility = "visible";
+        setTimeout(function () { document.getElementById("mensaje").style.visibility = "hidden"; }, 4000);
+    }
 
     function handleclick(e) {
         e.preventDefault();
-
+        mostrarMensaje("Incorrect credentials !")
         setCliente({
             name: name,
             contact: contact,
@@ -32,8 +32,6 @@ function Singup() {
         */
 
         sessionStorage.setItem("cliente", JSON.stringify(cliente));
-        navigate('/Home')
-
     }
 
     return (
@@ -137,8 +135,7 @@ function Singup() {
                         </button>
                     </div>
                     <p id="mensaje">
-                        {/* {mensaje} */}
-                        Incorrect credentials !
+                        {mensaje}
                     </p>
                 </form >
                 <img id="logo" src={Logo} alt="Logo" width="600px" />

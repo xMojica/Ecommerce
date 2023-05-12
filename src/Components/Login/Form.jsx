@@ -8,22 +8,19 @@ function Form() {
   const [email, setEmail] = useState("");
   const navigate = useNavigate();
   const messageRef = useRef(null);
-  const [mensaje, setmensaje] = useState("Incorrect credentials !");
+  // const [mensaje, setmensaje] = useState("");
 
-  function mostrarMensaje(men) {
-    setmensaje(men);
-    document.getElementById("mensaje").style.visibility = "visible";
-    setTimeout(function () { document.getElementById("mensaje").style.visibility = "hidden"; }, 4000);
-  }
+  // function mostrarMensaje(men) {
+  //   setmensaje(men);
+  //   document.getElementById("mensaje").style.visibility = "visible";
+  //   setTimeout(function () { document.getElementById("mensaje").style.visibility = "hidden"; }, 4000);
+  // }
 
   function handleClick(e) {
     e.preventDefault();
     console.log(password);
     console.log(email);
-    mostrarMensaje("Incorrect credentials !")
-    setTimeout(function () { navigate("/Home") }, 4000); // si lo quito no encuentra el Id despues entonces pongo timeOut
-
-
+    navigate("/home")
     // axios
     //   .get(``)
     //   .then((response) => {
@@ -99,7 +96,7 @@ function Form() {
         </button>
       </div>
       <p ref={messageRef} id="mensaje">
-        {mensaje}
+
       </p>
     </form>
   );

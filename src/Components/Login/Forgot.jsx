@@ -12,9 +12,9 @@ function Forgot() {
 
   function mostrarMensaje(men) {
     setmensaje(men);
-    document.getElementById("mensaje").style.display = "block";
+    document.getElementById("mensaje").style.visibility = "visible";
     document.getElementById("mensaje").classList.add("animacion");
-    setTimeout(function () { document.getElementById("mensaje").style.display = "none"; }, 4000);
+    setTimeout(function () { document.getElementById("mensaje").style.visibility = "hidden"; }, 4000);
   }
 
   function handleClick(e) {
@@ -104,7 +104,7 @@ function Forgot() {
               Back
             </button>
           </div>
-          <p ref={messageRef} id="mensaje" style={{ display: "none" }}>
+          <p ref={messageRef} id="mensaje">
             {mensaje}
           </p>
         </form>
