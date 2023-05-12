@@ -8,7 +8,7 @@ function Form() {
   const [email, setEmail] = useState("");
   const navigate = useNavigate();
   const messageRef = useRef(null);
-  const [mensaje, setmensaje] = useState("Soy el mensaje de prueba de error");
+  const [mensaje, setmensaje] = useState("Incorrect credentials !");
 
   function mostrarMensaje(men) {
     setmensaje(men);
@@ -20,7 +20,9 @@ function Form() {
     e.preventDefault();
     console.log(password);
     console.log(email);
-    mostrarMensaje()
+    mostrarMensaje("Incorrect credentials !")
+    setTimeout(function () { navigate("/Home") }, 4000); // si lo quito no encuentra el Id despues entonces pongo timeOut
+
 
     // axios
     //   .get(``)

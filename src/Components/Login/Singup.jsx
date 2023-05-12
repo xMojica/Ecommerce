@@ -9,13 +9,13 @@ function Singup() {
     const [email, setEmail] = useState("");
     const [contact, setContact] = useState("");
     const [cliente, setCliente] = useState({});
-    const [mensaje, setmensaje] = useState("Holaaa");
+    // const [mensaje, setmensaje] = useState("Incorrect credentials !");
 
-    function mostrarMensaje(men) {
-        setmensaje(men);
-        document.getElementById("mensaje").style.visibility = "visible";
-        setTimeout(function () { document.getElementById("mensaje").style.visibility = "hidden"; }, 4000);
-    }
+    // function mostrarMensaje(men) {
+    //     setmensaje(men);
+    //     document.getElementById("mensaje").style.visibility = "visible";
+    //     setTimeout(function () { document.getElementById("mensaje").style.visibility = "hidden"; }, 4000);
+    // }
 
     function handleclick(e) {
         e.preventDefault();
@@ -130,14 +130,15 @@ function Singup() {
                             // onClick={() => { navigate("/") }}
                             onClick={(e) => {
                                 e.preventDefault();
-                                mostrarMensaje("Pruebaa");
+                                navigate("/");
                             }}
                         >
                             Back
                         </button>
                     </div>
                     <p id="mensaje">
-                        {mensaje}
+                        {/* {mensaje} */}
+                        Incorrect credentials !
                     </p>
                 </form >
                 <img id="logo" src={Logo} alt="Logo" width="600px" />
