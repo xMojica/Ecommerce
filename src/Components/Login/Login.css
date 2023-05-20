@@ -90,6 +90,9 @@
   font-size: 20px;
   width: 100%;
 }
+button:hover{
+  cursor: pointer;
+}
 
 .button1:hover {
   box-shadow: 10px 10px 20px var(--tertiaryColor),

@@ -9,7 +9,6 @@ function Singup() {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [contact, setContact] = useState("");
-    const [cliente, setCliente] = useState({});
     const [mensaje, setmensaje] = useState("");
 
     function mostrarMensaje(men) {
@@ -46,47 +45,46 @@ function Singup() {
         }
     }
 
-    function verificarEmail() {
-        let band = false
-        axios
-            .get(`https://ecommerceback-dlmy.onrender.com/api/client`)
-            .then((response) => {
-                response.data.forEach(element => {
-                    if (element.email === email) {
-                        band = true
-                    }
-                });
-            })
-            .catch(() => { })
-
-        if (band === true) {
-            mostrarMensaje("Correo en uso")
-        } else {
-            return true
+    async function verificarEmail() {
+        let band = true;
+        try {
+            const response = await axios.get(`https://ecommerceback-dlmy.onrender.com/api/client`);
+            response.data.forEach(element => {
+                if (element.email === email) {
+                    mostrarMensaje("The email is used");
+                    band = false;
+                }
+            });
+        } catch (error) {
+            console.log(error);
         }
+        return band;
     }
 
 
     function handleclick(e) {
         e.preventDefault();
-        if (verificarName() && verificarContact() && verificarPassword() && verificarEmail()) { // Verifico todo y si es true hago el post
 
-            setCliente({
+        if (verificarName() && verificarContact() && verificarPassword() && verificarEmail()) {
+
+            const cliente = {
                 fullname: name,
                 contact: contact,
                 email: email,
                 password: password,
                 admin: "Off"
-            })
+            }
 
-            axios
-                .post(`https://ecommerceback-dlmy.onrender.com/api/client/`, cliente)
+            axios.post(`https://ecommerceback-dlmy.onrender.com/api/client/`, cliente)
                 .then(() => {
-                    mostrarMensaje("Successful registration")
-                    setTimeout(function () { navigate("/") }, 4000)
+                    mostrarMensaje("Successful registration");
+                    setTimeout(function () {
+                        navigate("/");
+                    }, 4000);
                 })
                 .catch(() => { });
         }
+
     }
 
     return (
