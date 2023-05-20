@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { React, useState } from "react";
 import Logo from "../../images/Logo.png";
+import axios from 'axios';
 
 function Singup() {
     const navigate = useNavigate();
@@ -17,21 +18,75 @@ function Singup() {
         setTimeout(function () { document.getElementById("mensaje").style.visibility = "hidden"; }, 4000);
     }
 
+    function verificarName() {
+        let regex = /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/;
+        if (regex.test(name)) {
+            return true;
+        } else {
+            mostrarMensaje("The fullname field only contains alphabetic characters.");
+        }
+    }
+
+    function verificarContact() {
+        let regex = /^\d{10}$/;
+        if (regex.test(contact)) {
+            return true
+        } else {
+            mostrarMensaje("The phone number must be 10 numbers.");
+            return false
+        }
+    }
+
+    function verificarPassword() {
+        if (password !== "") {
+            return true
+        } else {
+            mostrarMensaje("The password cannot be empty.")
+            return false
+        }
+    }
+
+    function verificarEmail() {
+        let band = false
+        axios
+            .get(`https://ecommerceback-dlmy.onrender.com/api/client`)
+            .then((response) => {
+                response.data.forEach(element => {
+                    if (element.email === email) {
+                        band = true
+                    }
+                });
+            })
+            .catch(() => { })
+
+        if (band === true) {
+            mostrarMensaje("Correo en uso")
+        } else {
+            return true
+        }
+    }
+
+
     function handleclick(e) {
         e.preventDefault();
-        mostrarMensaje("Incorrect credentials !")
-        setCliente({
-            name: name,
-            contact: contact,
-            email: email,
-            password: password,
-        });
+        if (verificarName() && verificarContact() && verificarPassword() && verificarEmail()) { // Verifico todo y si es true hago el post
 
-        /*    
-            ! Hace falta hacer una peticion get antes de hacer el post para verificar que el correo no exista
-        */
+            setCliente({
+                fullname: name,
+                contact: contact,
+                email: email,
+                password: password,
+                admin: "Off"
+            })
 
-        sessionStorage.setItem("cliente", JSON.stringify(cliente));
+            axios
+                .post(`https://ecommerceback-dlmy.onrender.com/api/client/`, cliente)
+                .then(() => {
+                    mostrarMensaje("Successful registration")
+                    setTimeout(function () { navigate("/") }, 4000)
+                })
+                .catch(() => { });
+        }
     }
 
     return (
@@ -52,7 +107,7 @@ function Singup() {
 
                         </svg>
                         <input
-                            placeholder="Name"
+                            placeholder="Full name"
                             className="input-field"
                             type="text"
                             onChange={(e) => { setName(e.target.value) }}
@@ -125,9 +180,7 @@ function Singup() {
                     <div className="btn">
                         <button
                             className="button1"
-                            // onClick={() => { navigate("/") }}
-                            onClick={(e) => {
-                                e.preventDefault();
+                            onClick={() => {
                                 navigate("/");
                             }}
                         >
@@ -138,7 +191,7 @@ function Singup() {
                         {mensaje}
                     </p>
                 </form >
-                <img id="logo" src={Logo} alt="Logo" width="600px" />
+                <img id="logo" src={Logo} alt="Logo" width="600px" height={"600px"} />
             </div >
         </>
     );

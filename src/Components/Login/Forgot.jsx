@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { React, useRef, useState } from "react";
 import Logo from "../../images/Logo.png";
+import axios from 'axios';
 
 function Forgot() {
   const navigate = useNavigate();
@@ -8,6 +9,7 @@ function Forgot() {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [mensaje, setmensaje] = useState("");
+  const [cliente, setCliente] = useState({})
 
 
   function mostrarMensaje(men) {
@@ -19,32 +21,27 @@ function Forgot() {
 
   function handleClick(e) {
     e.preventDefault();
-    console.log(email);
-    console.log(password);
-    mostrarMensaje("Password changed successfully")
-    setTimeout(function () { navigate('/') }, 4000);
 
-    // let cliente = {};
-    // axios
-    //   .get(`https://sadimi-eoya.onrender.com/api/employee/${email}`)
-    //   .then((response) => {
-    //     cliente = response.data;
-    //     cliente.password = password;
+    axios
+      .get(`https://ecommerceback-dlmy.onrender.com/api/client/${email}`)
+      .then((response) => {
+        response.data.password = password;
+        setCliente(response.data)
 
-    //   axios
-    //     .patch(
-    //       `https://sadimi-eoya.onrender.com/api/employee/${user}`,user)
-    //     .then(() => {
-    //       mostrarMensaje("Password changed successfully")
-    //        setTimeout(function () { navigate('/') }, 4000);
-    //     })
-    //     .catch((e) => {
-    //       mostrarMensaje("We couldn't change the password at this time, please try again later")
-    //     });
-    // })
-    // .catch(() => {
-    //   mostrarMensaje("Email does not exist")
-    // });
+        axios
+          .patch(
+            ``, cliente)
+          .then(() => {
+            mostrarMensaje("Password changed successfully")
+            setTimeout(function () { navigate('/') }, 3500);
+          })
+          .catch(() => {
+            mostrarMensaje("We couldn't change the password at this time, please try again later")
+          });
+      })
+      .catch(() => {
+        mostrarMensaje("Email does not exist")
+      });
   }
 
   return (
@@ -108,7 +105,7 @@ function Forgot() {
             {mensaje}
           </p>
         </form>
-        <img id="logo" src={Logo} alt="Logo" width="600px" />
+        <img id="logo" src={Logo} alt="Logo" width="600px" height={"600px"} />
       </div>
     </>
   );

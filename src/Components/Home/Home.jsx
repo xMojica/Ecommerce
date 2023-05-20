@@ -6,7 +6,7 @@ function Home() {
         <main>
             <Products categoria={""} />
         </main>
-    )
+    );
 }
 
 export default Home
