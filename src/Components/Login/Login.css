@@ -17,7 +17,8 @@
   border-radius: 40px;
   transition: .4s ease-in-out;
   width: 35%;
-  height: 40rem;
+  height: 100%;
+
 }
 
 .form:hover {
@@ -28,7 +29,6 @@
   text-align: center;
   margin: 1em;
   color: var(--tertiaryColor);
-  font-size: 1.2em;
   font-size: 2em;
 }
 
@@ -37,6 +37,7 @@
   align-items: center;
   justify-content: center;
   gap: 0.5em;
+  margin-bottom: 10px;
   border-radius: 25px;
   padding: 0.6em;
   outline: none;
@@ -89,6 +90,9 @@
   font-size: 20px;
   width: 100%;
 }
+button:hover{
+  cursor: pointer;
+}
 
 .button1:hover {
   box-shadow: 10px 10px 20px var(--tertiaryColor),
@@ -117,23 +121,27 @@
   color: white;
 }
 
-#mensaje, #mensaje2 {
+#note {
+  text-align: left;
+  margin-top: 20px;
+  color: var(--tertiaryColor);
+  font-size: 1em;
+}
+
+#mensaje{
+  visibility: visible;
   margin-left: auto;
   margin-right: auto;
   color: var(--tertiaryColor);
-  animation: shake 0.5s ease-in-out;
   font-size: 25px;
-}
-
-#mensaje2 {
-  color: white;
+  animation: shake 0.8s ease-in-out infinite;
 }
 
 @keyframes shake {
   0% { transform: translateX(0); }
-  25% { transform: translateX(-10px); }
-  50% { transform: translateX(10px); }
-  75% { transform: translateX(-10px); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
   100% { transform: translateX(0); }
 }
 
@@ -145,6 +153,9 @@
 }
 
 @media (max-width: 1079px) {
+  #logo {
+    display: none;
+  }
   
   .divcontenedor {
     margin-top: 5%;
