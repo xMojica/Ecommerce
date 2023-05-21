@@ -136,6 +136,7 @@
   75% { transform: translateX(-10px); }
   100% { transform: translateX(0); }
 }
+
 @media (max-width: 935px){
   #logo {
     display: none;
