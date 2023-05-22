@@ -18,11 +18,11 @@ function Singup() {
     }
 
     function verificarName() {
-        let regex = /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/;
+        let regex = /^([A-Za-z]+)\s([A-Za-z]+(\s[A-Za-z]+)?)$/;
         if (regex.test(name)) {
             return true;
         } else {
-            mostrarMensaje("The fullname field only contains alphabetic characters.");
+            mostrarMensaje("The fullname must contain name and last name");
         }
     }
 
@@ -55,9 +55,7 @@ function Singup() {
                     band = false;
                 }
             });
-        } catch (error) {
-            console.log(error);
-        }
+        } catch (e) { }
         return band;
     }
 

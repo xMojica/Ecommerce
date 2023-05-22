@@ -3,6 +3,7 @@ import Login from "./Components/Login/Login";
 import Home from "./Components/Home/Home";
 import Forgot from "./Components/Login/Forgot";
 import Singup from "./Components/Login/Singup";
+import Article from "./Components/Articulo/Article";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Route exact path="/Forgot" element={<Forgot />} />
         <Route exact path="/Singup" element={<Singup />} />
         <Route path="/Home" element={<Home />} />
+        <Route path="/Article" element={<Article />} />
       </Routes>
     </BrowserRouter>
   );

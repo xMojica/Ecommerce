@@ -1,0 +1,16 @@
+#main-descripcion{
+    display: flex;
+    background-color: var(--primaryColor);
+}
+
+#imagen{
+    width: 50%;
+    margin: 5%;
+    display: flex;
+    justify-content: flex-start;
+}
+
+img {
+    width: 50%;
+    border-radius: 20px;
+}

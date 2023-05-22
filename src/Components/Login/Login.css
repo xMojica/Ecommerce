@@ -135,6 +135,7 @@ button:hover{
   color: var(--tertiaryColor);
   font-size: 25px;
   animation: shake 0.8s ease-in-out infinite;
+  text-align: center;
 }
 
 @keyframes shake {
