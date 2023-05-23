@@ -1,0 +1,7 @@
+footer {
+    background-color: var(--primaryColor);
+    height: 200px;
+    margin:0px 1%;
+    width: 98%;
+    border-radius: 10px;
+}

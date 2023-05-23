@@ -1,16 +1,17 @@
 import React from 'react'
 import Header from "../Header/Header"
+import Footer from "../Footer/Footer"
 import './Article.css'
 
 function Articulo() {
+
     const article = JSON.parse(sessionStorage.getItem("Article"))
 
     return (
 
         <>
             <Header />
-
-            <main id="main-descripcion">
+            <main id='main-article'>
                 <div id='imagen'>
                     <img src={article.image} alt="imagen" />
                 </div>
@@ -19,12 +20,13 @@ function Articulo() {
                     <h3>{`$ ${article.price}`}</h3>
                     <div className="input-div one">
                         <div className="div">
-                            <input type="number" placeholder="Cantidad" className="input" id='cantidad' />
+                            <input type="number" placeholder="Amount" className="input" id='cantidad' />
                         </div>
                     </div >
                     <button className='button1'>Comprar</button>
                 </div>
             </main>
+            <Footer />
         </>
 
     )

@@ -2,6 +2,7 @@ main {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    margin:2% 0;
 }
 
 .product {

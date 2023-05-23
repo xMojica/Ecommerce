@@ -6,8 +6,10 @@
     --blackColor:#111010;
     background-color: #2e3436;
     font-family: 'Tw Cen MT';
+    height: 100%;
   }
 
 code {
   font-family:'Roboto';
 }
+

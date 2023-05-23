@@ -23,14 +23,14 @@ function Forgot() {
     e.preventDefault();
 
     axios
-      .get(`https://ecommerceback-dlmy.onrender.com/api/client/${email}`)
+      .get(`https://ecommerceback-dlmy.onrender.com/api/email/?search=${email}`)
       .then((response) => {
         response.data.password = password;
         setCliente(response.data)
 
         axios
-          .patch(
-            ``, cliente)
+          .put(
+            `https://ecommerceback-dlmy.onrender.com/api/client/`, cliente)
           .then(() => {
             mostrarMensaje("Password changed successfully")
             setTimeout(function () { navigate('/') }, 3500);
