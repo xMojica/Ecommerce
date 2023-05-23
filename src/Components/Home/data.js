@@ -121,16 +121,6 @@ const data = {
         "https://res.cloudinary.com/dbvltbvea/image/upload/v1683399898/Ecommerce/xboxGamePass12_xisgg7.jpg",
     },
   ],
-  clients: [
-    {
-      email: "m@gmail.com",
-      password: "0000",
-    },
-    {
-      email: "d@gmail.com",
-      password: "0000",
-    },
-  ],
 };
 
 export default data;

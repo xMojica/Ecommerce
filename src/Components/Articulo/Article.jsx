@@ -13,7 +13,7 @@ function Articulo() {
             <Header />
             <main id='main-article'>
                 <div id='imagen'>
-                    <img src={article.image} alt="imagen" />
+                    <img src={article.img} alt="imagen" />
                 </div>
                 <div id='descripcion'>
                     <h1>{article.name}</h1>
