@@ -11,7 +11,6 @@ function Header() {
     const logo = "https://res.cloudinary.com/dbvltbvea/image/upload/v1681261966/Logo_lmojv5.png"
 
     function handleChange(e) {
-        sessionStorage.setItem("Busqueda", e.target.value);
         context.setBusqueda(e.target.value)
     }
 
@@ -29,8 +28,10 @@ function Header() {
                     <li id='li-logout'>
                         <div id='div-logout'
                             onClick={() => {
+                                context.setBusqueda("");
                                 navigate("/");
                                 sessionStorage.clear();
+
                             }}
                         >
                             <box-icon name='log-out-circle' color='#ffffff' size="md"></box-icon>

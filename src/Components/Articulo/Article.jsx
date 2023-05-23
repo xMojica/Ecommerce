@@ -4,7 +4,7 @@ import Footer from "../Footer/Footer"
 import './Article.css'
 
 function Articulo() {
-
+    window.scrollTo(0, 0);
     const article = JSON.parse(sessionStorage.getItem("Article"))
 
     return (
