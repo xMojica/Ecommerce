@@ -5,3 +5,36 @@ footer {
     width: 98%;
     border-radius: 10px;
 }
+
+#div-logos {
+    width: 100%;
+    display: flex;
+    justify-content: center; 
+}
+
+#div-super {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    
+}
+
+footer > p {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+    font-size: 20px;
+    color: white;
+}
+
+footer > #div-super > img {
+    margin: 0 10px;
+}
+
+#div-logos > span:hover {
+    cursor: pointer;
+}
+
+hr {
+    color: white;
+}
