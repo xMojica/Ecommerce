@@ -23,6 +23,7 @@
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
     height: 400px;
+    color: white;
    
   }
   
@@ -31,4 +32,23 @@
     width: 400px;
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
+}
+
+#botones{
+    margin-top: 10px;
+    display: inline-flex;
+    width: 100%;
+}
+
+#main-article > #descripcion > #botones .button1 {
+    margin: 0 auto;
+    width: 40%;
+}
+
+#main-article > #descripcion > .input-div > div > input {
+    height: 2rem;
+    width: 80%;
+    border-radius: 10px;
+    outline: none;
+    border: none;
 }

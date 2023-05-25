@@ -16,14 +16,20 @@ function Articulo() {
                     <img src={article.img} alt="imagen" />
                 </div>
                 <div id='descripcion'>
-                    <h1>{article.name}</h1>
-                    <h3>{`$ ${article.price}`}</h3>
+                    <h1><strong>{article.name}</strong></h1>
+                    <h3>{article.description}</h3>
+                    <h3>{`$ ${article.price} USD`}</h3>
+                    <h3>Quantity Available: {article.amount}</h3>
                     <div className="input-div one">
                         <div className="div">
                             <input type="number" placeholder="Amount" className="input" id='cantidad' />
                         </div>
                     </div >
-                    <button className='button1'>Comprar</button>
+                    <div id="botones">
+                        <button className='button1'>Comprar</button>
+                        <button className='button1'>Add</button>
+                    </div>
+
                 </div>
             </main>
             <Footer />
