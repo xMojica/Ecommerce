@@ -20,7 +20,7 @@ function Header() {
             context.setCategoria("license");
             return <Home />;
         } else if (e.target.value === "3") {
-            context.setCategoria("Subscription");
+            context.setCategoria("subscription");
             return <Home />;
         } else {
             context.setCategoria("");
