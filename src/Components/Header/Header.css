@@ -60,3 +60,28 @@ li {
     margin-right: 0;
     margin-left: 15%;
 }
+
+#categories {
+    background-color: var(--primaryColor);
+    color: white;
+    font-size: 25px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    -webkit-appearance:none ;
+
+
+
+
+
+}
+
+ #categories option {
+    background-color: var(--primaryColor);
+    color: var(--tertiaryColor);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+
+  #categories option::selection {
+    color: var(--primaryColor);
+  }

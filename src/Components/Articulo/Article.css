@@ -22,14 +22,15 @@
     width: 30%;
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
-    height: 400px;
+    height: 500px;
     color: white;
+    font-size: 18px;
    
   }
   
 
 #imagen > img {
-    width: 400px;
+    width: 500px;
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
 }
@@ -45,10 +46,11 @@
     width: 40%;
 }
 
-#main-article > #descripcion > .input-div > div > input {
+#main-article > #descripcion > .input-div > form > select {
     height: 2rem;
     width: 80%;
     border-radius: 10px;
     outline: none;
     border: none;
+    font-size: 18px;
 }

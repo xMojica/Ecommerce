@@ -39,7 +39,7 @@ function Products(props) {
             {context.busqueda === "" ? (
                 // Mostrar todos los productos sin filtrar
                 data.map((product) => {
-                    if (props.categoria && product.category !== props.categoria) {
+                    if (context.categoria && product.category !== context.categoria) {
                         return null;
                     }
 

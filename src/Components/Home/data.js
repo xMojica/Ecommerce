@@ -58,7 +58,7 @@ const data = {
     },
     {
       id: 8,
-      name: "Licence Windows 10 Pro",
+      name: "License Windows 10 Pro",
       price: "80",
       category: "license",
       image:
@@ -74,7 +74,7 @@ const data = {
     },
     {
       id: 10,
-      name: "Licence Office 2019",
+      name: "License Office 2019",
       price: "30",
       category: "license",
       image:
@@ -82,7 +82,7 @@ const data = {
     },
     {
       id: 11,
-      name: "Licence Office 2021",
+      name: "License Office 2021",
       price: "40",
       category: "license",
       image:
