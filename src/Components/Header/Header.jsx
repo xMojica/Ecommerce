@@ -12,6 +12,9 @@ function Header() {
     const navigate = useNavigate("");
     const logo = "https://res.cloudinary.com/dbvltbvea/image/upload/v1681261966/Logo_lmojv5.png"
 
+    const user = JSON.parse(sessionStorage.getItem("cliente"));
+    console.log(user)
+
     function handleChange(e) {
         if (e.target.value === "1") {
             context.setCategoria("console");
@@ -31,12 +34,47 @@ function Header() {
         context.setBusqueda(e.target.value);
     }
 
+    function handleChange3(e) {
+        switch (e.event.target) {
+            case 1:
+                navigate("")
+                break;
+            case 2:
+
+                break;
+            case 3:
+
+                break;
+            case 4:
+
+                break;
+            case 5:
+
+                break;
+            case 6:
+
+                break;
+            case 7:
+
+                break;
+            case 8:
+
+                break;
+            case 9:
+
+                break;
+            default:
+
+                break;
+        }
+    }
+
     return (
         <header>
             <a href="/Home"><img id='logo' src={logo} alt="Logo Sadimi" width="100px" /></a>
             <input id='buscador' type="text" placeholder='Search' onChange={handleChange2}></input>
             <nav id='nav-header'>
-                <select name="Categories" id="categories" onChange={handleChange}>
+                <select name="Categories" id="categories" className='menu' onChange={handleChange}>
                     <option disabled selected>Categories</option>
                     <option value="1">Console</option>
                     <option value="2">License</option>
@@ -45,7 +83,21 @@ function Header() {
                 </select>
 
                 <ul>
-                    <li>Profile</li>
+                    <li>
+                        {user[0].admin === "Off" ? (<select name="Profile" id="Profile" className='menu' onChange={handleChange3}>
+                            <option disabled selected>Profile</option>
+                            <option value="1">Change password</option>
+                            <option value="2">History</option>
+                            <option value="3">Payment methods</option>
+                            <option value="4">Delete Account</option>
+                        </select>) : (<select name="Admin" id="Admin" className='menu' onChange={handleChange3}>
+                            <option disabled selected>Admin</option>
+                            <option value="5">Add product</option>
+                            <option value="6">Add user</option>
+                            <option value="7">Edit product</option>
+                            <option value="8">Delete product</option>
+                        </select>)}
+                    </li>
                     <li>
                         <box-icon name='cart' color='#ffffff' size="md"></box-icon>
                     </li>

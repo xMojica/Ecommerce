@@ -8,7 +8,7 @@ import axios from 'axios';
 
 import './Home.css';
 
-function Products(props) {
+function Products() {
     const context = useContext(Context)
     const navigate = useNavigate();
     const [data, setData] = useState([])
@@ -56,13 +56,9 @@ function Products(props) {
                     );
                 })
             ) : (
-                // Realizar búsqueda en la data por nombre
-                data
-                    .filter((product) => product.name.toLowerCase().includes(context.busqueda.toLowerCase()))
+
+                data.filter((product) => product.name.toLowerCase().includes(context.busqueda.toLowerCase()))
                     .map((product) => {
-                        // if (props.categoria && product.category !== props.categoria) {
-                        //     return null;
-                        // }
                         return (
                             <div key={product.id} className="product" onClick={() => handleClick(product)}>
                                 <img src={product.img} alt={product.name} height="335px" />
@@ -78,7 +74,6 @@ function Products(props) {
             )}
         </>
     );
-
 }
 
 export default Products;
