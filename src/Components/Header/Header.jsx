@@ -71,23 +71,22 @@ function Header() {
             <input id='buscador' type="text" placeholder='Search' onChange={handleChange2}></input>
             <nav id='nav-header'>
                 <select name="Categories" id="categories" className='menu' onChange={handleChange}>
-                    <option disabled selected>Categories</option>
+                    <option value="4">Categories</option>
                     <option value="1">Console</option>
                     <option value="2">License</option>
                     <option value="3">Subscriptions</option>
-                    <option value="4">All</option>
                 </select>
 
                 <ul>
                     <li>
                         {user.admin === "Off" ? (<select name="Profile" id="Profile" className='menu' onChange={handleChange3} >
-                            <option disabled selected>Profile</option>
+                            <option disabled value>Profile</option>
                             <option value="1">Change password</option>
                             <option value="2">History</option>
                             <option value="3">Payment methods</option>
                             <option value="4">Delete Account</option>
                         </select>) : (<select name="Admin" id="Admin" className='menu' onChange={handleChange3}>
-                            <option disabled selected>Admin</option>
+                            <option defaultValue>Admin</option>
                             <option value="5">Add product</option>
                             <option value="6">Add user</option>
                             <option value="7">Edit product</option>
@@ -103,7 +102,6 @@ function Header() {
                                 context.setBusqueda("");
                                 navigate("/");
                                 sessionStorage.clear();
-
                             }}
                         >
                             <box-icon name='log-out-circle' color='#ffffff' size="md"></box-icon>

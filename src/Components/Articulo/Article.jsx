@@ -1,12 +1,26 @@
-import React, { useState } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import Header from "../Header/Header"
 import Footer from "../Footer/Footer"
 import './Article.css'
+import { Context } from '../../Context/main';
 
 function Articulo() {
     window.scrollTo(0, 0);
+    const context = useContext(Context)
     const article = JSON.parse(sessionStorage.getItem("Article"))
     const [I, setI] = useState(1);
+
+    useEffect(() => {
+        console.log(context.cart)
+    }, [context.cart])
+
+    function addCart() {
+        const article2 = article
+        article2.total = article.price * I; // total a pagar
+        article2.quantity = I; // cantidad de unidades pedidas
+        context.setCart([...context.cart, article2])
+
+    }
 
     return (
 
@@ -48,12 +62,12 @@ function Articulo() {
                         <h3 id='article-price'>{`$ ${article.price * I} USD`}</h3>
                     </div >
                     <div id="botones">
-                        <button className='button1' id='buy'>Buy</button>
-                        <button className='button1' id='add'>Add cart</button>
+                        <button className='button1' id='buy' >Buy</button>
+                        <button className='button1' id='add' onClick={addCart}>Add cart</button>
                     </div>
 
                 </div>
-            </main>
+            </main >
             <Footer />
         </>
 
