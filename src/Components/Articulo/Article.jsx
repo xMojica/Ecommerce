@@ -19,7 +19,6 @@ function Articulo() {
         article2.total = article.price * I; // total a pagar
         article2.quantity = I; // cantidad de unidades pedidas
         context.setCart([...context.cart, article2])
-
     }
 
     return (
