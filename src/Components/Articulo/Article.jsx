@@ -17,18 +17,16 @@ function Articulo() {
                     <img src={article.img} alt="imagen" />
                 </div>
                 <div id='descripcion'>
-                    <h1><strong>{article.name}</strong></h1>
-                    <hr />
-                    <h3>{article.description}</h3>
-                    <h3>{`$ ${article.price} USD`}</h3>
-                    <h3>Quantity Available: {article.amount}</h3>
+                    <h1 id='title'>{article.name}</h1>
+                    <p id='article-description'>{article.description}</p>
+                    <p id='article-quantity'>Quantity Available: <strong>{article.amount}</strong></p>
                     <div className="input-div one">
-                        <form >
-                            <h3>Amount</h3>
+                        <form id='form-article'>
+                            <div><p>Amount: </p></div>
                             <div className="quantity">
                                 <button onClick={(e) => {
                                     e.preventDefault()
-                                    if (I >= 1) {
+                                    if (I > 1) {
                                         setI(I - 1);
                                     }
 
@@ -46,12 +44,12 @@ function Articulo() {
                                     <box-icon name='plus'></box-icon>
                                 </button>
                             </div>
-
                         </form>
+                        <h3 id='article-price'>{`$ ${article.price * I} USD`}</h3>
                     </div >
                     <div id="botones">
-                        <button className='button1'>Comprar</button>
-                        <button className='button1'>Add</button>
+                        <button className='button1' id='buy'>Buy</button>
+                        <button className='button1' id='add'>Add cart</button>
                     </div>
 
                 </div>

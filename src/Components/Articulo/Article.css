@@ -22,35 +22,32 @@
   width: 30%;
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
-  height: 500px;
+  height: 600px;
   color: white;
   font-size: 18px;
 }
 
 #imagen > img {
-  width: 500px;
+  width: 600px;
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
 }
 
 #botones {
   margin-top: 10px;
-  display: inline-flex;
+  display: flex;
+  justify-content: flex-start;
   width: 100%;
 }
 
-#main-article > #descripcion > #botones .button1 {
-  margin: 0 auto;
+#buy {
+  margin: 0 14% 0 0;
   width: 40%;
 }
 
-#main-article > #descripcion > .input-div > form > select {
-  height: 2rem;
-  width: 80%;
-  border-radius: 10px;
-  outline: none;
-  border: none;
-  font-size: 18px;
+#add {
+  margin: 0;
+  width: 40%;
 }
 
 .quantity {
@@ -87,4 +84,19 @@
   outline: none;
   background-color: transparent;
   padding-bottom: 2px;
+}
+
+#article-price {
+  background-color: var(--tertiaryColor);
+  color: var(--primaryColor);
+  border-radius: 20px;
+  font-size: 35px;
+  justify-content: center;
+  padding: 0 20px;
+}
+
+#form-article {
+  width: 200px;
+  display: flex;
+  justify-content: space-between;
 }
