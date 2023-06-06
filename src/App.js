@@ -4,6 +4,7 @@ import Home from "./Components/Home/Home";
 import Forgot from "./Components/Login/Forgot";
 import Singup from "./Components/Login/Singup";
 import Article from "./Components/Articulo/Article";
+import Change from "./Components/Profile/Change";
 import ContextProvider from "./Context/main";
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
           <Route exact path="/Singup" element={<Singup />} />
           <Route path="/Home" element={<Home />} />
           <Route path="/Article" element={<Article />} />
+          <Route path="/Change" element={<Change />} />
         </Routes>
       </BrowserRouter>
     </ContextProvider>

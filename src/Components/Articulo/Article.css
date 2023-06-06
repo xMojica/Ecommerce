@@ -1,56 +1,90 @@
-#main-article{
-    margin-top: 25px;
-    display: flex;
-    background-color: var(--backgound-color);
+#main-article {
+  margin-top: 25px;
+  display: flex;
+  background-color: var(--backgound-color);
 }
 
-#imagen{
-    margin:5% 0 5% 0;
-    display: flex;
-    justify-content: flex-start;
-    margin-right: 0;
+#imagen {
+  margin: 5% 0 5% 0;
+  display: flex;
+  justify-content: flex-start;
+  margin-right: 0;
 }
 
 #descripcion {
-    margin-top: 5%;
-    padding-left: 2%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    background-color: var(--primaryColor);
-    width: 30%;
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
-    height: 500px;
-    color: white;
-    font-size: 18px;
-   
-  }
-  
-
-#imagen > img {
-    width: 500px;
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
+  margin-top: 5%;
+  padding-left: 2%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  background-color: var(--primaryColor);
+  width: 30%;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  height: 500px;
+  color: white;
+  font-size: 18px;
 }
 
-#botones{
-    margin-top: 10px;
-    display: inline-flex;
-    width: 100%;
+#imagen > img {
+  width: 500px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+#botones {
+  margin-top: 10px;
+  display: inline-flex;
+  width: 100%;
 }
 
 #main-article > #descripcion > #botones .button1 {
-    margin: 0 auto;
-    width: 40%;
+  margin: 0 auto;
+  width: 40%;
 }
 
 #main-article > #descripcion > .input-div > form > select {
-    height: 2rem;
-    width: 80%;
-    border-radius: 10px;
-    outline: none;
-    border: none;
-    font-size: 18px;
+  height: 2rem;
+  width: 80%;
+  border-radius: 10px;
+  outline: none;
+  border: none;
+  font-size: 18px;
+}
+
+.quantity {
+  height: 30px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin: auto;
+  background-color: #ffffff;
+  border: 1px solid #e5e5e5;
+  border-radius: 7px;
+  filter: drop-shadow(0px 1px 0px #efefef)
+    drop-shadow(0px 1px 0.5px rgba(239, 239, 239, 0.5));
+}
+
+.quantity label {
+  width: 20px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 2px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #47484b;
+}
+
+.quantity button {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  outline: none;
+  background-color: transparent;
+  padding-bottom: 2px;
 }

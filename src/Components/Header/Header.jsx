@@ -5,15 +5,12 @@ import { useNavigate } from 'react-router-dom';
 import { Context } from "../../Context/main"
 import Home from '../Home/Home';
 
-
-
 function Header() {
     const context = useContext(Context)
     const navigate = useNavigate("");
     const logo = "https://res.cloudinary.com/dbvltbvea/image/upload/v1681261966/Logo_lmojv5.png"
 
     const user = JSON.parse(sessionStorage.getItem("cliente"));
-    console.log(user)
 
     function handleChange(e) {
         if (e.target.value === "1") {
@@ -35,36 +32,35 @@ function Header() {
     }
 
     function handleChange3(e) {
-        switch (e.event.target) {
-            case 1:
+        switch (e.target.value) {
+            case "1":
                 navigate("")
                 break;
-            case 2:
-
+            case "2":
+                navigate("")
                 break;
-            case 3:
-
+            case "3":
+                navigate("")
                 break;
-            case 4:
-
+            case "4":
+                navigate("")
                 break;
-            case 5:
-
+            case "5":
+                navigate("")
                 break;
-            case 6:
-
+            case "6":
+                navigate("")
                 break;
-            case 7:
-
+            case "7":
+                navigate("")
                 break;
-            case 8:
-
+            case "8":
+                navigate("")
                 break;
-            case 9:
-
+            case "9":
+                navigate("")
                 break;
             default:
-
                 break;
         }
     }
@@ -84,7 +80,7 @@ function Header() {
 
                 <ul>
                     <li>
-                        {user[0].admin === "Off" ? (<select name="Profile" id="Profile" className='menu' onChange={handleChange3}>
+                        {user.admin === "Off" ? (<select name="Profile" id="Profile" className='menu' onChange={handleChange3} >
                             <option disabled selected>Profile</option>
                             <option value="1">Change password</option>
                             <option value="2">History</option>

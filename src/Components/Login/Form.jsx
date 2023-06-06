@@ -20,9 +20,9 @@ function Form() {
     e.preventDefault();
 
     axios
-      .get(`https://ecommerceback-dlmy.onrender.com/api/email/?search=${email}`)
+      .get(`https://ecommerceback-dlmy.onrender.com/api/client/${email}/`)
       .then((response) => {
-        if (response.data[0].password === password) {
+        if (response.data.password === password) {
           sessionStorage.setItem("cliente", JSON.stringify(response.data));
           navigate("/home")
         } else {

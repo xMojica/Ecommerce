@@ -1,6 +1,5 @@
 import React from 'react';
 import { useContext, useState, useEffect } from 'react';
-// import data from './data';
 import { useNavigate } from 'react-router-dom';
 import { Context } from '../../Context/main';
 
@@ -14,7 +13,7 @@ function Products() {
     const [data, setData] = useState([])
 
     useEffect(() => {
-        axios.get('https://ecommerceback-dlmy.onrender.com/api/product')
+        axios.get('https://ecommerceback-dlmy.onrender.com/api/product/')
             .then((response) => {
                 if (response.data !== null) {
                     sessionStorage.setItem('Products', JSON.stringify(response.data));

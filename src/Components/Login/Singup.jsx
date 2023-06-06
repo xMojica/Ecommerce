@@ -48,7 +48,7 @@ function Singup() {
     async function verificarEmail() {
         let band = true;
         try {
-            const response = await axios.get(`https://ecommerceback-dlmy.onrender.com/api/client`);
+            const response = await axios.get(`https://ecommerceback-dlmy.onrender.com/api/client/`);
             response.data.forEach(element => {
                 if (element.email === email) {
                     mostrarMensaje("The email is used");

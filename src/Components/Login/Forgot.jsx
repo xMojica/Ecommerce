@@ -9,8 +9,6 @@ function Forgot() {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [mensaje, setmensaje] = useState("");
-  const [cliente, setCliente] = useState({})
-
 
   function mostrarMensaje(men) {
     setmensaje(men);
@@ -23,14 +21,14 @@ function Forgot() {
     e.preventDefault();
 
     axios
-      .get(`https://ecommerceback-dlmy.onrender.com/api/email/?search=${email}`)
+      .get(`https://ecommerceback-dlmy.onrender.com/api/client/${email}/`)
       .then((response) => {
-        response.data.password = password;
-        setCliente(response.data)
+        const cliente = response.data
+        cliente.password = password;
 
         axios
-          .put(
-            `https://ecommerceback-dlmy.onrender.com/api/client/`, cliente)
+          .patch(
+            `https://ecommerceback-dlmy.onrender.com/api/client/${email}/`, cliente)
           .then(() => {
             mostrarMensaje("Password changed successfully")
             setTimeout(function () { navigate('/') }, 3500);
