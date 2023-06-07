@@ -62,8 +62,8 @@ function Cart() {
                                             <td>{e.price}</td>
                                             <td>{e.quantity}</td>
                                             <td>{e.total}</td>
-                                            <td><i id={index} className='bx bx-trash bx-md' onClick={delet}></i></td>
                                             <td><i id={index} className='bx bx-minus bx-md' onClick={minus}></i></td>
+                                            <td><i id={index} className='bx bx-trash bx-md' onClick={delet}></i></td>
                                             <td><i id={index} className='bx bx-plus bx-md' onClick={plus}></i></td>
                                         </tr>
                                     </tbody>

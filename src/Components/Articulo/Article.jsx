@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Header from "../Header/Header"
 import Footer from "../Footer/Footer"
@@ -19,6 +19,27 @@ function Articulo() {
         context.setCart([...context.cart, article2])
     }
 
+    useEffect(() => {
+        const updateCart = () => {
+
+            const quantityMap = {};
+
+            context.cart.forEach(item => {
+                if (quantityMap[item.id]) {
+                    if (quantityMap[item.id].quantity + item.quantity <= quantityMap[item.id].amount) {
+                        quantityMap[item.id].quantity += item.quantity;
+                        quantityMap[item.id].total = quantityMap[item.id].quantity * quantityMap[item.id].price;
+                    }
+                } else {
+                    quantityMap[item.id] = { ...item };
+                }
+            });
+            const updatedCart = Object.values(quantityMap);
+            context.setCart(updatedCart);
+        };
+
+        updateCart();
+    }, [context.cart, context]);
     return (
 
         <>
