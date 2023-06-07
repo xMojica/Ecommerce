@@ -61,7 +61,9 @@ function Cart() {
                                     </tr>
                                 </thead>
 
-                            ) : null}
+                            ) : (
+                                <h3>Empty cart</h3>
+                            )}
 
                             {context.cart.map((e, index) => {
                                 total = total + e.total
@@ -80,23 +82,27 @@ function Cart() {
                                     </tbody>
                                 )
                             })}
-                            <tbody key="totalRow">
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>Total:</td>
-                                    <td id='total'>$ {total}</td>
-                                    <td></td>
-                                </tr>
-                            </tbody>
+
+                            {
+                                context.cart.length === 0 ? (null) : (<tbody key="totalRow">
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>Total:</td>
+                                        <td id='total'><strong>$ {total}</strong></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>)
+                            }
+
                         </table>
                     </div>
 
                     {context.cart.length !== 0 ? (
                         <div className="botonesCart">
-                            <button id='deleteall' className='button1 botoncart' onClick={deleteAll}>Delete All</button>
-                            <button className='button1 botoncart'>Buy</button>
+                            <button id='deleteall' className='button1 botoncart' onClick={deleteAll}><strong>Empty cart</strong></button>
+                            <button className='button1 botoncart'><strong>Buy</strong></button>
                         </div>
                     ) : null}
                 </div>

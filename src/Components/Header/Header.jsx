@@ -3,6 +3,7 @@ import "./Header.css";
 import { useNavigate } from 'react-router-dom';
 import { Context } from "../../Context/main"
 import Home from '../Home/Home';
+import axios from 'axios';
 
 function Header() {
     const context = useContext(Context)
@@ -43,7 +44,16 @@ function Header() {
                 navigate("")
                 break;
             case "4":
-                navigate("")
+                axios.delete(`https://ecommerceback-dlmy.onrender.com/api/client/${cliente.email}`)
+                    .then((response) => {
+                        console.log('Elemento eliminado exitosamente: ' + response.data);
+                        setTimeout(() => {
+                            navigate("/")
+                        }, 4000)
+                    })
+                    .catch(error => {
+                        console.error('Error al eliminar el elemento:', error);
+                    });
                 break;
             case "5":
                 navigate("")
