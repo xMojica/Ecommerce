@@ -11,7 +11,7 @@ function Footer() {
                 <span onClick={() => { window.open('https://www.youtube.com', '_blank') }}><i className='bx bxl-youtube bx-lg'></i></span>
             </div>
             <hr />
-            <p>Todos los derechos reservados &copy; 2023</p>
+            <p>All rights reserved &copy; 2023</p>
             <div id='div-super'>
                 <img src="https://http2.mlstatic.com/frontend-assets/ml-web-navigation/ui-navigation/5.21.22/mercadolibre/sic.png" alt="superintentendcia" />
                 <img src="https://http2.mlstatic.com/frontend-assets/ml-web-navigation/ui-navigation/5.21.22/mercadolibre/pum.png" alt="nopare" />

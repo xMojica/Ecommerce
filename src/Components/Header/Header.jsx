@@ -35,7 +35,7 @@ function Header() {
     function handleChange3(e) {
         switch (e.target.value) {
             case "1":
-                navigate("")
+                navigate("/Change")
                 break;
             case "2":
                 navigate("")
@@ -47,6 +47,7 @@ function Header() {
                 axios.delete(`https://ecommerceback-dlmy.onrender.com/api/client/${cliente.email}`)
                     .then((response) => {
                         console.log('Elemento eliminado exitosamente: ' + response.data);
+                        sessionStorage.clear()
                         setTimeout(() => {
                             navigate("/")
                         }, 4000)

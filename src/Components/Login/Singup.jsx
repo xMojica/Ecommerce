@@ -45,27 +45,10 @@ function Singup() {
         }
     }
 
-    async function verificarEmail() {
-        let band = true;
-        try {
-            const response = await axios.get(`https://ecommerceback-dlmy.onrender.com/api/client/`);
-            response.data.forEach(element => {
-                if (element.email === email) {
-                    mostrarMensaje("The email is used");
-                    band = false;
-                }
-            });
-        } catch (error) {
-            console.log(error);
-        }
-        return band;
-    }
-
-
     function handleclick(e) {
         e.preventDefault();
 
-        if (verificarName() && verificarContact() && verificarPassword() && verificarEmail()) {
+        if (verificarName() && verificarContact() && verificarPassword()) {
 
             const cliente = {
                 fullname: name,

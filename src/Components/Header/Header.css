@@ -78,9 +78,6 @@ li {
   background-color: var(--primaryColor);
   color: var(--tertiaryColor);
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-}
-
-.menu > option:hover {
   cursor: pointer;
 }
 

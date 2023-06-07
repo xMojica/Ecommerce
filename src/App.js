@@ -5,7 +5,7 @@ import Forgot from "./Components/Login/Forgot";
 import Singup from "./Components/Login/Singup";
 import Article from "./Components/Articulo/Article";
 import Change from "./Components/Profile/Change";
-import Cart from "./Components/Cart/Cart";
+import Cart from "./Components/Cart/Cartt";
 import ContextProvider from "./Context/main";
 
 function App() {
