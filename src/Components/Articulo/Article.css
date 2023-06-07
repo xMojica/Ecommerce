@@ -100,3 +100,18 @@
   display: flex;
   justify-content: space-between;
 }
+
+.bx-arrow-back {
+  position: absolute;
+  top: 130px;
+  left: 50px;
+  cursor: pointer;
+}
+
+#icon-mas {
+  color: black;
+}
+
+#icon-min {
+  color: black;
+}

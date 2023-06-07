@@ -16,21 +16,25 @@ function Form() {
     document.getElementById("mensaje").style.visibility = "visible";
     setTimeout(function () { document.getElementById("mensaje").style.visibility = "hidden"; }, 4000);
   }
+
   function handleClick(e) {
     e.preventDefault();
 
     axios
-      .get(`https://ecommerceback-dlmy.onrender.com/api/client/${email}/`)
-      .then((response) => {
-        if (response.data.password === password) {
-          sessionStorage.setItem("cliente", JSON.stringify(response.data));
-          navigate("/home")
-        } else {
-          mostrarMensaje("Password is incorrect");
-        }
+      .post(`https://ecommerceback-dlmy.onrender.com/api/login/`, {
+        email: email,
+        password: password
       })
-      .catch(() => {
-        mostrarMensaje("This user does not exist");
+      .then((response) => {
+        sessionStorage.setItem("cliente", JSON.stringify(response.data));
+        navigate("/home")
+      })
+      .catch((e) => {
+        if (e.response.data.message) {
+          mostrarMensaje("Invalid Password");
+        } else {
+          mostrarMensaje("This user does not exist");
+        }
       });
   }
   return (

@@ -5,6 +5,7 @@ import Forgot from "./Components/Login/Forgot";
 import Singup from "./Components/Login/Singup";
 import Article from "./Components/Articulo/Article";
 import Change from "./Components/Profile/Change";
+import Cart from "./Components/Cart/Cart";
 import ContextProvider from "./Context/main";
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
           <Route exact path="/Singup" element={<Singup />} />
           <Route path="/Home" element={<Home />} />
           <Route path="/Article" element={<Article />} />
+          <Route path="/Cart" element={<Cart />} />
           <Route path="/Change" element={<Change />} />
         </Routes>
       </BrowserRouter>

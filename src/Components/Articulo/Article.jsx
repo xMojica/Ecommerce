@@ -1,4 +1,5 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useState, useContext } from 'react'
+import { useNavigate } from 'react-router-dom'
 import Header from "../Header/Header"
 import Footer from "../Footer/Footer"
 import './Article.css'
@@ -7,12 +8,9 @@ import { Context } from '../../Context/main';
 function Articulo() {
     window.scrollTo(0, 0);
     const context = useContext(Context)
+    const navigate = useNavigate()
     const article = JSON.parse(sessionStorage.getItem("Article"))
     const [I, setI] = useState(1);
-
-    useEffect(() => {
-        console.log(context.cart)
-    }, [context.cart])
 
     function addCart() {
         const article2 = article
@@ -26,6 +24,9 @@ function Articulo() {
         <>
             <Header />
             <main id='main-article'>
+                <i className='bx bx-arrow-back bx-lg' onClick={() => {
+                    navigate("/Home")
+                }}></i>
                 <div id='imagen'>
                     <img src={article.img} alt="imagen" />
                 </div>
@@ -44,7 +45,8 @@ function Articulo() {
                                     }
 
                                 }}>
-                                    <box-icon name='minus'></box-icon>
+                                    <i className='bx bx-minus bx-sm' id='icon-min' ></i>
+
                                 </button>
                                 <label>{I}</label>
                                 <button onClick={(e) => {
@@ -54,7 +56,8 @@ function Articulo() {
                                     }
 
                                 }}>
-                                    <box-icon name='plus'></box-icon>
+                                    <i className='bx bx-plus bx-sm' id='icon-mas'></i>
+
                                 </button>
                             </div>
                         </form>

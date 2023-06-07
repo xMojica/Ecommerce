@@ -1,5 +1,4 @@
 import React, { useContext } from 'react'
-import "boxicons";
 import "./Header.css";
 import { useNavigate } from 'react-router-dom';
 import { Context } from "../../Context/main"
@@ -7,6 +6,7 @@ import Home from '../Home/Home';
 
 function Header() {
     const context = useContext(Context)
+    const cliente = JSON.parse(sessionStorage.getItem("cliente"))
     const navigate = useNavigate("");
     const logo = "https://res.cloudinary.com/dbvltbvea/image/upload/v1681261966/Logo_lmojv5.png"
 
@@ -67,7 +67,9 @@ function Header() {
 
     return (
         <header>
-            <a href="/Home"><img id='logo' src={logo} alt="Logo Sadimi" width="100px" /></a>
+            <img id='logo' src={logo} alt="Logo Sadimi" width="100px" onClick={() => {
+                navigate("/home")
+            }} />
             <input id='buscador' type="text" placeholder='Search' onChange={handleChange2}></input>
             <nav id='nav-header'>
                 <select name="Categories" id="categories" className='menu' onChange={handleChange}>
@@ -80,7 +82,7 @@ function Header() {
                 <ul>
                     <li>
                         {user.admin === "Off" ? (<select name="Profile" id="Profile" className='menu' onChange={handleChange3} >
-                            <option disabled value>Profile</option>
+                            <option defaultValue>{cliente.fullname}</option>
                             <option value="1">Change password</option>
                             <option value="2">History</option>
                             <option value="3">Payment methods</option>
@@ -94,24 +96,31 @@ function Header() {
                         </select>)}
                     </li>
                     <li>
-                        <box-icon name='cart' color='#ffffff' size="md"></box-icon>
+                        <p id='cart-cant' style={{ display: context.cart.length === 0 ? 'none' : 'block' }} onClick={() => {
+                            navigate("/Cart");
+                        }}>
+                            {context.cart.length}
+                        </p>
+                        <i className='bx bx-cart bx-md' onClick={() => {
+                            navigate("/Cart");
+                        }}></i>
                     </li>
                     <li id='li-logout'>
                         <div id='div-logout'
                             onClick={() => {
                                 context.setBusqueda("");
-                                navigate("/");
                                 sessionStorage.clear();
+                                navigate("/")
                             }}
                         >
-                            <box-icon name='log-out-circle' color='#ffffff' size="md"></box-icon>
+                            <i className='bx bx-log-out-circle bx-md'></i>
                         </div>
                     </li>
                 </ul>
             </nav>
 
-
         </header >
+
 
     )
 }
