@@ -43,3 +43,28 @@ td {
   border-radius: 20px;
   color: var(--primaryColor);
 }
+
+#deleteall:hover {
+  background-color: red;
+  color: white;
+}
+
+.botonesCart {
+  margin: 3rem 0;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  padding: 0 auto;
+}
+
+.botoncart {
+  display: flex;
+  justify-content: center;
+  width: 20%;
+}
+
+#arrowcart {
+  top: 180px;
+  left: 60px;
+}

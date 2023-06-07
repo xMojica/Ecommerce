@@ -24,7 +24,6 @@ function Cart() {
             context.setCart(newCart)
             navigate("/Cart")
         }
-
     }
 
     function plus(e) {
@@ -36,22 +35,34 @@ function Cart() {
         }
     }
 
+    function deleteAll() {
+        context.setCart([]);
+        navigate("/Cart")
+    }
+
     return (
         <>
             < Header />
             <main>
+                <i id='arrowcart' className='bx bx-arrow-back bx-lg ' onClick={() => {
+                    navigate("/Home")
+                }}></i>
                 <div id="contenedor">
                     <div className="contenedor-item">
                         <table id='carrito'>
-                            <thead>
-                                <tr>
-                                    <th></th>
-                                    <th>Name</th>
-                                    <th>Price</th>
-                                    <th>Quantity</th>
-                                    <th>Total</th>
-                                </tr>
-                            </thead>
+                            {context.cart.length !== 0 ? (
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>Name</th>
+                                        <th>Price</th>
+                                        <th>Quantity</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+
+                            ) : null}
+
                             {context.cart.map((e, index) => {
                                 total = total + e.total
                                 return (
@@ -61,7 +72,7 @@ function Cart() {
                                             <td>{e.name}</td>
                                             <td>{e.price}</td>
                                             <td>{e.quantity}</td>
-                                            <td>{e.total}</td>
+                                            <td>${e.total}</td>
                                             <td><i id={index} className='bx bx-minus bx-md' onClick={minus}></i></td>
                                             <td><i id={index} className='bx bx-trash bx-md' onClick={delet}></i></td>
                                             <td><i id={index} className='bx bx-plus bx-md' onClick={plus}></i></td>
@@ -75,13 +86,21 @@ function Cart() {
                                     <td></td>
                                     <td></td>
                                     <td>Total:</td>
-                                    <td id='total'>$ {total} USD</td>
+                                    <td id='total'>$ {total}</td>
+                                    <td></td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
+
+                    {context.cart.length !== 0 ? (
+                        <div className="botonesCart">
+                            <button id='deleteall' className='button1 botoncart' onClick={deleteAll}>Delete All</button>
+                            <button className='button1 botoncart'>Buy</button>
+                        </div>
+                    ) : null}
                 </div>
-            </main>
+            </main >
 
             <Footer />
         </>
