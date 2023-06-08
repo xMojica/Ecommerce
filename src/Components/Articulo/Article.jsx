@@ -6,7 +6,6 @@ import './Article.css'
 import { Context } from '../../Context/main';
 
 function Articulo() {
-    window.scrollTo(0, 0);
     const context = useContext(Context)
     const navigate = useNavigate()
     const article = JSON.parse(sessionStorage.getItem("Article"))
@@ -21,9 +20,7 @@ function Articulo() {
 
     useEffect(() => {
         const updateCart = () => {
-
             const quantityMap = {};
-
             context.cart.forEach(item => {
                 if (quantityMap[item.id]) {
                     if (quantityMap[item.id].quantity + item.quantity <= quantityMap[item.id].amount) {
@@ -40,6 +37,7 @@ function Articulo() {
 
         updateCart();
     }, [context.cart, context]);
+
     return (
 
         <>

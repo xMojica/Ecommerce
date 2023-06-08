@@ -24,7 +24,6 @@ function Header() {
             context.setCategoria("subscription");
             return <Home />;
         } else {
-            context.setCategoria("");
             return <Home />;
         }
     }
@@ -38,10 +37,10 @@ function Header() {
                 navigate("/Change")
                 break;
             case "2":
-                navigate("")
+
                 break;
             case "3":
-                navigate("")
+
                 break;
             case "4":
                 axios.delete(`https://ecommerceback-dlmy.onrender.com/api/client/${cliente.email}`)
@@ -57,19 +56,10 @@ function Header() {
                     });
                 break;
             case "5":
-                navigate("")
+                navigate("/Addp")
                 break;
             case "6":
-                navigate("")
-                break;
-            case "7":
-                navigate("")
-                break;
-            case "8":
-                navigate("")
-                break;
-            case "9":
-                navigate("")
+                navigate("/Singup")
                 break;
             default:
                 break;
@@ -79,12 +69,13 @@ function Header() {
     return (
         <header>
             <img id='logo' src={logo} alt="Logo Sadimi" width="100px" onClick={() => {
-                navigate("/home")
+                context.setCategoria("")
+                navigate("/Home")
             }} />
             <input id='buscador' type="text" placeholder='Search' onChange={handleChange2}></input>
             <nav id='nav-header'>
                 <select name="Categories" id="categories" className='menu' onChange={handleChange}>
-                    <option value="4">Categories</option>
+                    <option value="0">Categories</option>
                     <option value="1">Console</option>
                     <option value="2">License</option>
                     <option value="3">Subscriptions</option>
@@ -102,8 +93,6 @@ function Header() {
                             <option defaultValue>Admin</option>
                             <option value="5">Add product</option>
                             <option value="6">Add user</option>
-                            <option value="7">Edit product</option>
-                            <option value="8">Delete product</option>
                         </select>)}
                     </li>
                     <li>

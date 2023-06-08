@@ -11,6 +11,7 @@ function Products() {
     const context = useContext(Context)
     const navigate = useNavigate();
     const [data, setData] = useState([])
+    const cliente = JSON.parse(sessionStorage.getItem("cliente"))
 
     useEffect(() => {
         axios.get('https://ecommerceback-dlmy.onrender.com/api/product/')
@@ -33,31 +34,31 @@ function Products() {
         sessionStorage.setItem("Article", JSON.stringify(product));
     }
 
-    return (
-        <>
-            {context.busqueda === "" ? (
-                // Mostrar todos los productos sin filtrar
-                data.map((product) => {
-                    if (context.categoria && product.category !== context.categoria) {
-                        return null;
-                    }
+    function deleteProd(e) {
+        e.stopPropagation()
+        axios.delete(`https://ecommerceback-dlmy.onrender.com/api/product/${e.target.id}`)
+            .then(() => {
+                console.log('Elemento eliminado exitosamente');
+            })
+            .catch(error => {
+                console.error('Error al eliminar el elemento:', error);
+            });
+    }
 
-                    return (
-                        <div key={product.id} className="product" onClick={() => handleClick(product)}>
-                            <img src={product.img} alt={product.name} height="335px" />
-                            <div className="product-info">
-                                <h3>{product.name}</h3>
-                            </div>
-                            <div className="overview">
-                                <h3>${product.price} USD</h3>
-                            </div>
-                        </div>
-                    );
-                })
-            ) : (
+    function editProd(e) {
+        e.stopPropagation()
+    }
 
-                data.filter((product) => product.name.toLowerCase().includes(context.busqueda.toLowerCase()))
-                    .map((product) => {
+    if (cliente.admin === "Off") {
+        return (
+            <>
+                {context.busqueda === "" ? (
+                    // Mostrar todos los productos sin filtrar
+                    data.map((product) => {
+                        if (context.categoria && product.category !== context.categoria) {
+                            return null;
+                        }
+
                         return (
                             <div key={product.id} className="product" onClick={() => handleClick(product)}>
                                 <img src={product.img} alt={product.name} height="335px" />
@@ -70,9 +71,72 @@ function Products() {
                             </div>
                         );
                     })
-            )}
-        </>
-    );
+                ) : (
+
+                    data.filter((product) => product.name.toLowerCase().includes(context.busqueda.toLowerCase()))
+                        .map((product) => {
+                            return (
+                                <div key={product.id} className="product" onClick={() => handleClick(product)}>
+                                    <img src={product.img} alt={product.name} height="335px" />
+                                    <div className="product-info">
+                                        <h3>{product.name}</h3>
+                                    </div>
+                                    <div className="overview">
+                                        <h3>${product.price} USD</h3>
+                                    </div>
+                                </div>
+                            );
+                        })
+                )}
+            </>
+        );
+    } else { // cuando es administrador
+        return (
+            <>
+                {context.busqueda === "" ? (
+                    // Mostrar todos los productos sin filtrar
+                    data.map((product) => {
+                        if (context.categoria && product.category !== context.categoria) {
+                            return null;
+                        }
+
+                        return (
+                            <div key={product.id} className="product" onClick={() => handleClick(product)}>
+                                <img src={product.img} alt={product.name} height="335px" />
+                                <div className="product-info">
+                                    <h3>{product.name}</h3>
+                                </div>
+                                <div className="overview ov-admin">
+                                    <h3>${product.price} USD</h3>
+                                    <i id={product.id} className='bx bx-trash bx-sm btn-adm' onClick={deleteProd}></i>
+                                    <i id={product.id} className='bx bx-edit-alt btn-adm' onClick={editProd}></i>
+                                </div>
+                            </div>
+                        );
+                    })
+                ) : (
+
+                    data.filter((product) => product.name.toLowerCase().includes(context.busqueda.toLowerCase()))
+                        .map((product) => {
+                            return (
+                                <div key={product.id} className="product" onClick={() => handleClick(product)}>
+                                    <img src={product.img} alt={product.name} height="335px" />
+                                    <div className="product-info">
+                                        <h3>{product.name}</h3>
+                                    </div>
+                                    <div className="overview ov-admin">
+                                        <h3>${product.price} USD</h3>
+                                        <i id={product.id} className='bx bx-trash bx-sm btn-adm' onClick={deleteProd}></i>
+                                        <i id={product.id} className='bx bx-edit-alt btn-adm' onClick={editProd}></i>
+                                    </div>
+                                </div>
+                            );
+                        })
+                )}
+            </>
+        );
+
+    }
 }
 
 export default Products;

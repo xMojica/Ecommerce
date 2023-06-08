@@ -1,0 +1,16 @@
+.field-add {
+  height: 3rem;
+  border: none;
+}
+
+#cat {
+  cursor: pointer;
+}
+
+#menu-category {
+  height: 100%;
+  width: 100%;
+  background-color: var(--background-color);
+  font-size: 16px;
+  cursor: pointer;
+}
