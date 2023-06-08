@@ -47,6 +47,8 @@ function Products() {
 
     function editProd(e) {
         e.stopPropagation()
+        sessionStorage.setItem("id", e.target.id);
+        navigate("/Edit")
     }
 
     if (cliente.admin === "Off") {

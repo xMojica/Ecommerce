@@ -7,7 +7,7 @@ import Article from "./Components/Articulo/Article";
 import Change from "./Components/Profile/Change";
 import Cart from "./Components/Cart/Cartt";
 import Addp from "./Components/Admin/Addp";
-
+import Edit from "./Components/Admin/Edit";
 import ContextProvider from "./Context/main";
 
 function App() {
@@ -24,6 +24,7 @@ function App() {
           <Route path="/Cart" element={<Cart />} />
           <Route path="/Change" element={<Change />} />
           <Route path="/Addp" element={<Addp />} />
+          <Route path="/Edit" element={<Edit />} />
         </Routes>
       </BrowserRouter>
     </ContextProvider>
