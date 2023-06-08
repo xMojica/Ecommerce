@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import "./Header.css";
 import { useNavigate } from 'react-router-dom';
 import { Context } from "../../Context/main"
@@ -6,12 +6,15 @@ import Home from '../Home/Home';
 import axios from 'axios';
 
 function Header() {
+    const [cliente] = useState(JSON.parse(sessionStorage.getItem("cliente")))
     const context = useContext(Context)
-    const cliente = JSON.parse(sessionStorage.getItem("cliente"))
     const navigate = useNavigate("");
     const logo = "https://res.cloudinary.com/dbvltbvea/image/upload/v1681261966/Logo_lmojv5.png"
-
     const user = JSON.parse(sessionStorage.getItem("cliente"));
+
+    // useEffect(() => {
+    //     document.getElementById("sald-str").innerHTML = cliente.saldo
+    // }, [cliente])
 
     function handleChange(e) {
         if (e.target.value === "1") {
@@ -82,6 +85,7 @@ function Header() {
                 </select>
 
                 <ul>
+                    <li id='saldo' ><strong id='sald-str'>${cliente.saldo}</strong></li>
                     <li>
                         {user.admin === "Off" ? (<select name="Profile" id="Profile" className='menu' onChange={handleChange3} >
                             <option defaultValue>{cliente.fullname}</option>

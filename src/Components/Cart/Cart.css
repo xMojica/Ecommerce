@@ -79,3 +79,12 @@ td {
 #carrito > h3 {
   text-align: center;
 }
+
+#mensaje {
+  color: var(--background-color);
+  font-size: 45px;
+}
+
+#letrero {
+  font-size: 50px;
+}

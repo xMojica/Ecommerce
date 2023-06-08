@@ -64,7 +64,7 @@ function Edit() {
                     <p id="heading">Edit product</p>
 
                     <div className="field field-add">
-                        <p>Name: </p>
+                        <p><strong>Name:</strong> </p>
                         <input
                             placeholder={"Name: " + name}
                             className="input-field"
@@ -76,7 +76,7 @@ function Edit() {
                     </div>
 
                     <div className="field field-add">
-                        <p>Price: </p>
+                        <p><strong>Price: </strong></p>
                         <input
                             placeholder={"Price "}
                             className="input-field"
@@ -95,7 +95,7 @@ function Edit() {
                     </div>
 
                     <div className="field field-add">
-                        <p>Amount: </p>
+                        <p><strong>Amount: </strong></p>
                         <input
                             placeholder={"Amount:" + amount}
                             className="input-field"
@@ -113,7 +113,7 @@ function Edit() {
                     </div>
 
                     <div className="field field-add">
-                        <p>Description: </p>
+                        <p><strong>Description: </strong></p>
                         <input
                             placeholder={"Description:" + description}
                             className="input-field"
@@ -124,7 +124,7 @@ function Edit() {
                     </div>
 
                     <div className="field field-add">
-                        <p>Img: </p>
+                        <p><strong>Image: </strong></p>
                         <input
                             placeholder={"Img:" + img}
                             className="input-field"

@@ -83,7 +83,16 @@ function Articulo() {
                         <h3 id='article-price'>{`$ ${article.price * I} USD`}</h3>
                     </div >
                     <div id="botones">
-                        <button className='button1' id='buy' >Buy</button>
+                        <button className='button1' id='buy' onClick={() => {
+                            addCart()
+                            setTimeout(() => {
+                                navigate("/Cart")
+                                setTimeout(() => {
+                                    const boton = document.getElementById("comprar")
+                                    boton.click()
+                                })
+                            })
+                        }}>Buy</button>
                         <button className='button1' id='add' onClick={addCart}>Add cart</button>
                     </div>
 

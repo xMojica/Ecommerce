@@ -4,13 +4,32 @@ import { Context } from '../../Context/main'
 import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
 import { useNavigate } from 'react-router-dom';
-
+import axios from 'axios'
 
 function Cart() {
+    const cliente = JSON.parse(sessionStorage.getItem("cliente"))
+    // const [product] = useState()
     const navigate = useNavigate()
     const context = useContext(Context)
     let total = 0;
     const [newCart] = useState(context.cart)
+
+    function compra() {
+        // cliente.saldo = 500;
+        if (cliente.saldo >= total) {
+            const letrero = document.getElementById('letrero');
+            cliente.saldo = cliente.saldo - total;
+            sessionStorage.setItem("cliente", JSON.stringify(cliente))
+            letrero.innerHTML = "Purchase approved"
+            axios.put(`https://ecommerceback-dlmy.onrender.com/api/client/${cliente.email}/`, cliente)
+
+
+
+        } else {
+            const letrero = document.getElementById('letrero');
+            letrero.innerHTML = "Rejected purchase, insufficient balance"
+        }
+    }
 
     function delet(e) {
         context.cart.splice(e.target.id, 1);
@@ -62,7 +81,7 @@ function Cart() {
                                 </thead>
 
                             ) : (
-                                <h3>Empty cart</h3>
+                                <h3 id='letrero'>Empty cart</h3>
                             )}
 
                             {context.cart.map((e, index) => {
@@ -102,10 +121,24 @@ function Cart() {
                     {context.cart.length !== 0 ? (
                         <div className="botonesCart">
                             <button id='deleteall' className='button1 botoncart' onClick={deleteAll}><strong>Empty cart</strong></button>
-                            <button className='button1 botoncart'><strong>Buy</strong></button>
+                            <button id='comprar' className='button1 botoncart' onClick={(e) => {
+                                e.preventDefault()
+                                context.setCart([])
+                                setTimeout(() => {
+                                    compra()
+                                }, 10);
+
+                                setTimeout(() => {
+                                    const letrero = document.getElementById("letrero")
+                                    letrero.innerHTML = "Empty cart";
+                                    navigate("/Home")
+                                }, 5000);
+
+                            }} ><strong>Buy</strong></button>
                         </div>
                     ) : null}
                 </div>
+
             </main >
 
             <Footer />
