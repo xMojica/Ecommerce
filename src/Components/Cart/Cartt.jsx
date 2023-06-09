@@ -8,11 +8,30 @@ import axios from 'axios'
 
 function Cart() {
     const cliente = JSON.parse(sessionStorage.getItem("cliente"))
-    // const [product] = useState()
     const navigate = useNavigate()
     const context = useContext(Context)
     let total = 0;
     const [newCart] = useState(context.cart)
+
+    function descontarCantidad() {
+
+        context.cart.forEach((e, i) => {
+            const prod = {
+                name: e.name,
+                description: e.description,
+                price: e.price,
+                img: e.img,
+                amount: e.amount - e.quantity,
+                category: e.category
+            }
+            if (prod.amount === 0) {
+                axios.delete(`https://ecommerceback-dlmy.onrender.com/api/product/${context.cart[i].id}/`)
+            } else {
+                axios.put(`https://ecommerceback-dlmy.onrender.com/api/product/${context.cart[i].id}/`, prod)
+            }
+
+        })
+    }
 
     function compra() {
         // cliente.saldo = 500;
@@ -21,10 +40,8 @@ function Cart() {
             cliente.saldo = cliente.saldo - total;
             sessionStorage.setItem("cliente", JSON.stringify(cliente))
             letrero.innerHTML = "Purchase approved"
-            axios.put(`https://ecommerceback-dlmy.onrender.com/api/client/${cliente.email}/`, cliente)
-
-
-
+            axios.patch(`https://ecommerceback-dlmy.onrender.com/api/client/${cliente.email}/`, cliente)
+            descontarCantidad()
         } else {
             const letrero = document.getElementById('letrero');
             letrero.innerHTML = "Rejected purchase, insufficient balance"

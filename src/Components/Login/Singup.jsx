@@ -57,15 +57,19 @@ function Singup() {
                 password: password,
                 admin: "Off"
             }
-
-            axios.post(`https://ecommerceback-dlmy.onrender.com/api/client/`, cliente)
+            axios.get(`https://ecommerceback-dlmy.onrender.com/api/client/${email}/`)
                 .then(() => {
-                    mostrarMensaje("Successful registration");
-                    setTimeout(function () {
-                        navigate("/");
-                    }, 4000);
+                    mostrarMensaje("The email has already been used")
                 })
-                .catch(() => { });
+                .catch(() => {
+                    axios.post(`https://ecommerceback-dlmy.onrender.com/api/client/`, cliente)
+                        .then(() => {
+                            mostrarMensaje("Successful registration");
+                            setTimeout(function () {
+                                navigate("/");
+                            }, 4000);
+                        })
+                })
         }
 
     }

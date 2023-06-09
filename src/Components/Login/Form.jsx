@@ -21,11 +21,14 @@ function Form() {
     e.preventDefault();
 
     axios
-      .post(`https://ecommerceback-dlmy.onrender.com/api/login/`, {
+      // .post(`https://ecommerceback-dlmy.onrender.com/api/login/`, {
+      .post(`https://eback.azurewebsites.net/api/login/`, {
+
         email: email,
         password: password
       })
       .then((response) => {
+        response.data.password = password
         sessionStorage.setItem("cliente", JSON.stringify(response.data));
         navigate("/home")
       })
