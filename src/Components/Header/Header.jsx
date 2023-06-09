@@ -93,8 +93,8 @@ function Header() {
                         {user.admin === "Off" ? (<select name="Profile" id="Profile" className='menu' onChange={handleChange3} >
                             <option defaultValue>{cliente.fullname}</option>
                             <option value="1">Change password</option>
-                            <option value="2">History</option>
-                            <option value="3">Payment methods</option>
+                            {/* <option value="2">History</option>
+                            <option value="3">Payment methods</option> */}
                             <option value="4">Delete Account</option>
                         </select>) : (<select name="Admin" id="Admin" className='menu' onChange={handleChange3}>
                             <option defaultValue>Admin</option>
