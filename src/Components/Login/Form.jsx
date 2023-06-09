@@ -87,7 +87,7 @@ function Form() {
               Login
             </button>
             <button className="button1" onClick={() => { navigate('/singup') }}>
-              Singup
+              Sing up
             </button>
           </div>
           <div className="btn">
