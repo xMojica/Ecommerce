@@ -21,9 +21,7 @@ function Form() {
     e.preventDefault();
 
     axios
-      // .post(`https://ecommerceback-dlmy.onrender.com/api/login/`, {
-      .post(`https://eback.azurewebsites.net/api/login/`, {
-
+      .post(`https://ecommerceback-dlmy.onrender.com/api/login/`, {
         email: email,
         password: password
       })

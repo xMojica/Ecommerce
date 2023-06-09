@@ -46,17 +46,20 @@ function Header() {
 
                 break;
             case "4":
-                axios.delete(`https://ecommerceback-dlmy.onrender.com/api/client/${cliente.email}`)
-                    .then((response) => {
-                        console.log('Elemento eliminado exitosamente: ' + response.data);
-                        sessionStorage.clear()
-                        setTimeout(() => {
+                if (window.confirm("Are you sure you want to delete your account?")) {
+                    axios.delete(`https://ecommerceback-dlmy.onrender.com/api/client/${cliente.email}`)
+                        .then(() => {
+                            context.setBusqueda("");
+                            sessionStorage.clear();
                             navigate("/")
-                        }, 4000)
-                    })
-                    .catch(error => {
-                        console.error('Error al eliminar el elemento:', error);
-                    });
+                        })
+                        .catch(error => {
+                            console.error('Error al eliminar el usuario:', error);
+                        });
+                } else {
+                    navigate("/Home")
+                }
+
                 break;
             case "5":
                 navigate("/Addp")
