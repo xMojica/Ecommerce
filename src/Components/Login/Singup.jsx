@@ -18,11 +18,13 @@ function Singup() {
     }
 
     function verificarName() {
-        let regex = /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/;
+
+
+        let regex = /^[A-Za-z]*$/;
         if (regex.test(name)) {
             return true;
         } else {
-            mostrarMensaje("The fullname field should contain put first and last name and it should not be empty ");
+            mostrarMensaje("The fullname field should contain only letters");
         }
     }
 
@@ -68,6 +70,8 @@ function Singup() {
                             setTimeout(function () {
                                 navigate("/");
                             }, 4000);
+                        }).catch((e) => {
+                            mostrarMensaje(e.response.data.email[0])
                         })
                 })
         }
