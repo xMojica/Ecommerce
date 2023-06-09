@@ -8,7 +8,6 @@ import Change from "./Components/Profile/Change";
 import Cart from "./Components/Cart/Cartt";
 import Addp from "./Components/Admin/Addp";
 import Edit from "./Components/Admin/Edit";
-
 import ContextProvider from "./Context/main";
 
 function App() {
