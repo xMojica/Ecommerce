@@ -69,7 +69,7 @@ function Singup() {
                             mostrarMensaje("Successful registration");
                             setTimeout(function () {
                                 navigate("/");
-                            }, 4000);
+                            }, 2000);
                         }).catch((e) => {
                             mostrarMensaje(e.response.data.email[0])
                         })

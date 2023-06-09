@@ -34,7 +34,7 @@ function Cart() {
     }
 
     function compra() {
-        // cliente.saldo = 500;
+
         if (cliente.saldo >= total) {
             const letrero = document.getElementById('letrero');
             cliente.saldo = cliente.saldo - total;
@@ -143,13 +143,13 @@ function Cart() {
                                 context.setCart([])
                                 setTimeout(() => {
                                     compra()
-                                }, 1000);
+                                }, 10);
 
                                 setTimeout(() => {
                                     const letrero = document.getElementById("letrero")
                                     letrero.innerHTML = "Empty cart";
                                     navigate("/Home")
-                                }, 5000);
+                                }, 4000);
 
                             }} ><strong>Buy</strong></button>
                         </div>
