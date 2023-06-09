@@ -6,6 +6,7 @@ import Footer from '../Footer/Footer'
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios'
 
+
 function Cart() {
     const cliente = JSON.parse(sessionStorage.getItem("cliente"))
     const navigate = useNavigate()
@@ -34,7 +35,7 @@ function Cart() {
     }
 
     function compra() {
-        // cliente.saldo = 500;
+
         if (cliente.saldo >= total) {
             const letrero = document.getElementById('letrero');
             cliente.saldo = cliente.saldo - total;
@@ -139,6 +140,7 @@ function Cart() {
                         <div className="botonesCart">
                             <button id='deleteall' className='button1 botoncart' onClick={deleteAll}><strong>Empty cart</strong></button>
                             <button id='comprar' className='button1 botoncart' onClick={(e) => {
+                                navigate("/Formulario")
                                 e.preventDefault()
                                 context.setCart([])
                                 setTimeout(() => {
