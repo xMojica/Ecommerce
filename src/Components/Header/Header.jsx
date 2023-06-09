@@ -27,7 +27,7 @@ function Header() {
             context.setCategoria("subscription");
             return <Home />;
         } else {
-            context.setCategoria("");
+            // context.setCategoria("");
             return <Home />;
         }
     }

@@ -140,12 +140,11 @@ function Cart() {
                         <div className="botonesCart">
                             <button id='deleteall' className='button1 botoncart' onClick={deleteAll}><strong>Empty cart</strong></button>
                             <button id='comprar' className='button1 botoncart' onClick={(e) => {
-                                navigate("/Formulario")
                                 e.preventDefault()
                                 context.setCart([])
                                 setTimeout(() => {
                                     compra()
-                                }, 10);
+                                }, 1000);
 
                                 setTimeout(() => {
                                     const letrero = document.getElementById("letrero")
