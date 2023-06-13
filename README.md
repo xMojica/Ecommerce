@@ -6,15 +6,6 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
  Email: mojica@gmail.com <br>
  Password: 2323
 
-## Videos Planing Poker
-https://drive.google.com/drive/u/1/folders/19ArLC8-EpfS4HkOKvE9hYlJYGN3xMyb3
-
-## Repositorio del Backend
-https://github.com/AlejandroMartinez04/BackEcommerce.git
-
-## Spring Retrospective
-https://miro.com/welcomeonboard/OTRaWDM1VUlFTWxsS2FxWmVsWFpwY1JqQlhBOVlJaW1LZHlTczkwbHV6TklpdUx0VVdSUmlISUhpcUVKQVdqenwzNDU4NzY0NTU3MDIwMzgyNjA4fDI=?share_link_id=216759438591
-
 ## Available Scripts
 
 In the project directory, you can run:
@@ -81,3 +72,12 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+## Videos Planing Poker
+https://drive.google.com/drive/u/1/folders/19ArLC8-EpfS4HkOKvE9hYlJYGN3xMyb3
+
+## Repositorio del Backend
+https://github.com/AlejandroMartinez04/BackEcommerce.git
+
+## Spring Retrospective
+https://miro.com/welcomeonboard/OTRaWDM1VUlFTWxsS2FxWmVsWFpwY1JqQlhBOVlJaW1LZHlTczkwbHV6TklpdUx0VVdSUmlISUhpcUVKQVdqenwzNDU4NzY0NTU3MDIwMzgyNjA4fDI=?share_link_id=216759438591
