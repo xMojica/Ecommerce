@@ -3,8 +3,8 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Admin:
-Email: mojica@gmail.com
-Password: 2323
+## Email: mojica@gmail.com
+## Password: 2323
 
 ## Videos Planing Poker
 https://drive.google.com/drive/u/1/folders/19ArLC8-EpfS4HkOKvE9hYlJYGN3xMyb3
