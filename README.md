@@ -9,6 +9,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Videos Planing Poker
 https://drive.google.com/drive/u/1/folders/19ArLC8-EpfS4HkOKvE9hYlJYGN3xMyb3
 
+## Repositorio del Backend
+https://github.com/AlejandroMartinez04/BackEcommerce.git
+
 ## Available Scripts
 
 In the project directory, you can run:
