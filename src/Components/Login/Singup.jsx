@@ -169,7 +169,12 @@ function Singup() {
                         <button
                             className="button1"
                             onClick={() => {
-                                navigate("/");
+                                if (sessionStorage.getItem("cliente")) {
+                                    navigate("/Home")
+                                } else {
+                                    navigate("/");
+                                }
+
                             }}
                         >
                             Back
