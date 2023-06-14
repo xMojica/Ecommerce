@@ -19,7 +19,7 @@ function Singup() {
 
     function verificarName() {
 
-        let regex = /^[A-Za-z]*$/;
+        const regex = /^\S+\s+\S+$/;
         if (regex.test(name)) {
             return true;
         } else {
