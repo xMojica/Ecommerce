@@ -23,7 +23,7 @@ function Singup() {
         if (regex.test(name)) {
             return true;
         } else {
-            mostrarMensaje("The fullname field should contain only letters");
+            mostrarMensaje("The fullname field should contain Name and Lastname");
         }
     }
 
