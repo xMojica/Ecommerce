@@ -143,7 +143,7 @@ function Cart() {
                                 context.setCart([])
                                 setTimeout(() => {
                                     compra()
-                                }, 10);
+                                }, 100);
 
                                 setTimeout(() => {
                                     const letrero = document.getElementById("letrero")
