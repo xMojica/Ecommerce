@@ -24,11 +24,8 @@ function Cart() {
                 amount: e.amount - e.quantity,
                 category: e.category
             }
-            if (prod.amount === 0) {
-                axios.delete(`https://ecommerceback-dlmy.onrender.com/api/product/${context.cart[i].id}/`)
-            } else {
-                axios.put(`https://ecommerceback-dlmy.onrender.com/api/product/${context.cart[i].id}/`, prod)
-            }
+
+            axios.put(`https://ecommerceback-dlmy.onrender.com/api/product/${context.cart[i].id}/`, prod)
 
         })
     }

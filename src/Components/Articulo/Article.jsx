@@ -47,7 +47,7 @@ function Articulo() {
                     navigate("/Home")
                 }}></i>
                 <div id='imagen'>
-                    <img src={article.img} alt="imagen" />
+                    <img src={article.img} alt="imagen" height="600px" />
                 </div>
                 <div id='descripcion'>
                     <h1 id='title'>{article.name}</h1>

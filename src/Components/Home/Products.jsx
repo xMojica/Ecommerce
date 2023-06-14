@@ -39,13 +39,16 @@ function Products() {
 
     function deleteProd(e) {
         e.stopPropagation()
-        axios.delete(`https://ecommerceback-dlmy.onrender.com/api/product/${e.target.id}`)
-            .then(() => {
-                console.log('Elemento eliminado exitosamente');
-            })
-            .catch(error => {
-                console.error('Error al eliminar el elemento:', error);
-            });
+        if (window.confirm("Are you sure you want to delete this product?")) {
+            axios.delete(`https://ecommerceback-dlmy.onrender.com/api/product/${e.target.id}`)
+                .then(() => {
+                    console.log('Elemento eliminado exitosamente');
+                })
+                .catch(error => {
+                    console.error('Error al eliminar el elemento:', error);
+                });
+        }
+
     }
 
     function editProd(e) {
@@ -64,24 +67,39 @@ function Products() {
                             return null;
                         }
 
-                        return (
-                            <div key={product.id} className="product" onClick={() => handleClick(product)}>
-                                <img src={product.img} alt={product.name} height="335px" />
-                                <div className="product-info">
-                                    <h3>{product.name}</h3>
+                        if (product.amount === 0) {
+                            return (
+                                <div key={product.id} className="product" onClick={() => { alert("At this moment the product is not in stock, contact us next week") }}>
+                                    <img src={product.img} alt={product.name} height="335px" />
+                                    <div className="product-info">
+                                        <h3>{product.name}</h3>
+                                    </div>
+                                    <div className="overview">
+                                        <h3>${product.price} USD</h3>
+                                    </div>
                                 </div>
-                                <div className="overview">
-                                    <h3>${product.price} USD</h3>
+                            );
+                        } else {
+                            return (
+                                <div key={product.id} className="product" onClick={() => handleClick(product)}>
+                                    <img src={product.img} alt={product.name} height="335px" />
+                                    <div className="product-info">
+                                        <h3>{product.name}</h3>
+                                    </div>
+                                    <div className="overview">
+                                        <h3>${product.price} USD</h3>
+                                    </div>
                                 </div>
-                            </div>
-                        );
+                            );
+                        }
+
                     })
                 ) : (
 
                     data.filter((product) => product.name.toLowerCase().includes(context.busqueda.toLowerCase()))
                         .map((product) => {
                             return (
-                                <div key={product.id} className="product" onClick={() => handleClick(product)}>
+                                <div key={product.id} className="product" onClick={() => { alert("At this moment the product is not in stock, contact us next week") }}>
                                     <img src={product.img} alt={product.name} height="335px" />
                                     <div className="product-info">
                                         <h3>{product.name}</h3>
@@ -104,25 +122,21 @@ function Products() {
                         if (context.categoria && product.category !== context.categoria) {
                             return null;
                         }
-
-                        return (
-                            <div key={product.id} className="product" onClick={() => handleClick(product)}>
-                                <img src={product.img} alt={product.name} height="335px" />
-                                <div className="product-info">
-                                    <h3>{product.name}</h3>
+                        if (product.amount === 0) {
+                            return (
+                                <div key={product.id} className="product" onClick={() => { alert("There is no stock of this product") }}>
+                                    <img src={product.img} alt={product.name} height="335px" />
+                                    <div className="product-info">
+                                        <h3>{product.name}</h3>
+                                    </div>
+                                    <div className="overview ov-admin">
+                                        <h3>${product.price} USD</h3>
+                                        <i id={product.id} className='bx bx-trash bx-sm btn-adm' onClick={deleteProd}></i>
+                                        <i id={product.id} className='bx bx-edit-alt btn-adm' onClick={editProd}></i>
+                                    </div>
                                 </div>
-                                <div className="overview ov-admin">
-                                    <h3>${product.price} USD</h3>
-                                    <i id={product.id} className='bx bx-trash bx-sm btn-adm' onClick={deleteProd}></i>
-                                    <i id={product.id} className='bx bx-edit-alt btn-adm' onClick={editProd}></i>
-                                </div>
-                            </div>
-                        );
-                    })
-                ) : (
-
-                    data.filter((product) => product.name.toLowerCase().includes(context.busqueda.toLowerCase()))
-                        .map((product) => {
+                            );
+                        } else {
                             return (
                                 <div key={product.id} className="product" onClick={() => handleClick(product)}>
                                     <img src={product.img} alt={product.name} height="335px" />
@@ -136,6 +150,42 @@ function Products() {
                                     </div>
                                 </div>
                             );
+                        }
+                    })
+                ) : (
+
+                    data.filter((product) => product.name.toLowerCase().includes(context.busqueda.toLowerCase()))
+                        .map((product) => {
+                            if (product.amount === 0) {
+                                return (
+                                    <div key={product.id} className="product" onClick={() => { alert("There is no stock of this product") }}>
+                                        <img src={product.img} alt={product.name} height="335px" />
+                                        <div className="product-info">
+                                            <h3>{product.name}</h3>
+                                        </div>
+                                        <div className="overview ov-admin">
+                                            <h3>${product.price} USD</h3>
+                                            <i id={product.id} className='bx bx-trash bx-sm btn-adm' onClick={deleteProd}></i>
+                                            <i id={product.id} className='bx bx-edit-alt btn-adm' onClick={editProd}></i>
+                                        </div>
+                                    </div>
+                                );
+                            } else {
+                                return (
+                                    <div key={product.id} className="product" onClick={() => handleClick(product)}>
+                                        <img src={product.img} alt={product.name} height="335px" />
+                                        <div className="product-info">
+                                            <h3>{product.name}</h3>
+                                        </div>
+                                        <div className="overview ov-admin">
+                                            <h3>${product.price} USD</h3>
+                                            <i id={product.id} className='bx bx-trash bx-sm btn-adm' onClick={deleteProd}></i>
+                                            <i id={product.id} className='bx bx-edit-alt btn-adm' onClick={editProd}></i>
+                                        </div>
+                                    </div>
+                                );
+                            }
+
                         })
                 )}
             </>
