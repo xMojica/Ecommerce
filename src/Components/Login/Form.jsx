@@ -38,11 +38,13 @@ function Form() {
         }
       });
   }
+
+
   return (
     <>
       <div className="divcontenedor">
         <form className="form">
-          <p id="heading">Login</p>
+          <p id="heading" className='text-violet-700 font-bold' >Login</p>
           <div className="field">
             <svg
               className="input-icon"
