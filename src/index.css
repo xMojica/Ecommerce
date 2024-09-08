@@ -3,25 +3,19 @@
 @tailwind utilities;
 
 :root {
-    --primaryColor: #4b9de0;
-    --secondaryColor: #2196f3;
-    --tertiaryColor: #9bd1fd;
-    --cuaternaryColor: #84c1f3;
-    --blackColor: #111010;
-    --background-color: #2e3436;
-    background-color: #2e3436;
+    --primaryColor: #ebe6e0;
+    --secondaryColor: #4c7766;
+    --tertiaryColor: #1c1f1d;
+    background-image: url("./images/fondo.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 0;
     font-family: "Onest Variable", sans-serif;
-    height: 100%;
+    font-weight: bold;
 }
 
 body {
+    overflow: hidden;
     margin: 0;
     padding: 0;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-.bx {
-    color: white;
-    cursor: pointer;
 }
