@@ -84,16 +84,12 @@ function Singup() {
                     context.setSeverity("error")
                     context.setMensaje("Este email ya esta en uso");
                 })
-                .catch(() => {
+                .catch((e) => {
                     axios.post(`https://ecommerceback-dlmy.onrender.com/api/client/`, cliente)
                         .then(() => {
                             context.setOpen(true)
                             context.setSeverity("success")
-                            context.setMensaje("Usuario registrado con exito");
-                            // setTimeout(function () {
-                            //     context.setOpen(false)
-                            //     navigate("/");
-                            // }, 2000);
+                            context.setMensaje("Usuario registrado con exito")
                         }).catch((e) => {
                             context.setOpen(true)
                             context.setSeverity("error")
@@ -108,9 +104,32 @@ function Singup() {
     return (
         <>
             <div className="flex flex-row h-screen w-full items-center justify-center p-8">
+                <div className='h-16 w-2/5 fixed top-5 justify-center'>
+                    <Alerta />
+                </div>
                 <form className="flex flex-col w-full sm:w-1/2 h-[34rem] items-center gap-5 bg-white-400/30 m-4 px-4 pt-2 pb-2 rounded-lg border border-white/10 shadow-md shadow-black backdrop-blur-sm">
                     <h1 className='text-center text-primary font-extrabold text-4xl sm:m-5'>Registrarse</h1>
-                    <div className='grid grid-cols-2 gap-4 '>
+                    <div className='grid grid-cols-2 gap-5 '>
+                        <div className="flex flex-row h-10 bg-primary justify-center items-center px-3 rounded-lg shadow-lg shadow-black/30 hover:scale-105 ease-out duration-200">
+                            <svg
+                                className="fill-secondary"
+                                xmlns="http://www.w3.org/2000/svg"
+                                width={24}
+                                height={24}
+                                fill="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path d="M12 2a5 5 0 1 0 5 5 5 5 0 0 0-5-5zm0 8a3 3 0 1 1 3-3 3 3 0 0 1-3 3zm9 11v-1a7 7 0 0 0-7-7h-4a7 7 0 0 0-7 7v1h2v-1a5 5 0 0 1 5-5h4a5 5 0 0 1 5 5v1z"></path>
+
+                            </svg>
+                            <input
+                                placeholder="Nombre: "
+                                className="w-full bg-primary outline-none text-secondary"
+                                type="text"
+                                onChange={(e) => { setName(e.target.value) }}
+                            />
+                        </div>
+
                         <div className="flex flex-row h-10 bg-primary justify-center items-center px-3 rounded-lg shadow-lg shadow-black/30 hover:scale-105 ease-out duration-200">
                             <svg
                                 className="fill-secondary"
@@ -189,9 +208,7 @@ function Singup() {
                             />
                         </div>
                     </div>
-                    <div className='h-16 w-3/5 justify-center'>
-                        <Alerta />
-                    </div>
+
                     <div className="flex flex-row w-3/4 items-center justify-center gap-5">
                         <button className="w-1/2 text-primary text-center bg-secondary rounded-xl lg:text-xl text-lg p-3 mt-8  hover:scale-105 ease-out duration-200" onClick={handleclick}>
                             Registrarse
