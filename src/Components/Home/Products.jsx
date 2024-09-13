@@ -1,5 +1,5 @@
-import React from 'react';
-import { useContext, useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Context } from '../../Context/main';
 
@@ -11,26 +11,24 @@ function Products() {
     const context = useContext(Context)
     const navigate = useNavigate();
     const [data, setData] = useState([])
+    const [cargando, setCargando] = useState(false)
     const cliente = JSON.parse(sessionStorage.getItem("cliente"))
 
     useEffect(() => {
+        setCargando(true);
         axios.get('https://ecommerceback-dlmy.onrender.com/api/product/')
             .then((response) => {
-                if (response.data !== null) {
-                    sessionStorage.setItem('Products', JSON.stringify(response.data));
-                    setData(response.data);
-                } else {
+                if (response.data == null) {
                     console.log('No hay productos');
+                } else {
+                    sessionStorage.setItem('Products', JSON.stringify(response.data));
+                    setData(response.data)
                 }
             })
             .catch((error) => {
                 console.error('Error al obtener los productos:', error);
-            });
-
-    }, [data]);
-
-
-
+            })
+    }, [])
 
     function handleClick(product) {
         navigate("/Article")

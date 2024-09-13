@@ -7,44 +7,62 @@ import Alerta from "./Alerta"
 function Singup() {
     const navigate = useNavigate();
     const context = useContext(Context);
-    const [password, setPassword] = useState("");
-    const [name, setName] = useState("");
+    const [nombre, setNombre] = useState("");
+    const [apellido, setApellido] = useState("");
+    const [telefono, setTelefono] = useState("");
+    const [direccion, setDireccion] = useState("");
     const [email, setEmail] = useState("");
-    const [contact, setContact] = useState("");
+    const [contraseña, setContraseña] = useState("");
 
-
-
-    function verificarName() {
-
-        const regex = /^\S+\s+\S+$/;
-        if (regex.test(name)) {
+    function verificarNombre() {
+        const regex = /^[a-zA-Z]{2,}([a-zA-Z]{2,})?$/
+        if (regex.test(nombre)) {
             return true;
         } else {
             context.setOpen(true)
             context.setSeverity("error")
-            context.setMensaje("Debes ingresar Nombre y Apellido");
-        }
-    }
-
-    function verificarContact() {
-        let regex = /^\d{10}$/;
-        if (regex.test(contact)) {
-            return true
-        } else {
-            context.setOpen(true)
-            context.setSeverity("error")
-            context.setMensaje("El numero de contacto debe contener 10 numeros");
+            context.setMensaje("Debes ingresar un nombre valido");
+            setNombre("")
             return false
         }
     }
 
-    function verificarPassword() {
-        if (password !== "") {
+    function verificarApellido() {
+        const regex = /^[a-zA-Z]{2,}([a-zA-Z]{2,})?$/
+        if (regex.test(apellido)) {
+            return true;
+        } else {
+            context.setOpen(true)
+            context.setSeverity("error")
+            context.setMensaje("Debes ingresar un apellido valido");
+            setApellido("")
+            return false
+
+        }
+    }
+
+    function verificarTelefono() {
+        let regex = /^\d{10}$/;
+        if (regex.test(telefono)) {
             return true
         } else {
             context.setOpen(true)
             context.setSeverity("error")
-            context.setMensaje("Debes ingresar una contraseña");
+            context.setMensaje("El numero de telefono debe contener minimo 6 numeros");
+            setTelefono("")
+            return false
+        }
+    }
+
+    function verificarDireccion() {
+        let regex = /^[a-zA-Z0-9\s,.'-]{3,100}$ /;
+        if (regex.test(direccion)) {
+            return true
+        } else {
+            context.setOpen(true)
+            context.setSeverity("error")
+            context.setMensaje("Debes ingresar una direccion correcta");
+            setDireccion("")
             return false
         }
     }
@@ -52,7 +70,20 @@ function Singup() {
     function verificarEmail() {
         let regex = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
         if (regex.test(email)) {
-            return true
+            axios.get(`https://ecommerceback-dlmy.onrender.com/api/client/${email}/`)
+                .then(() => {
+                    context.setOpen(true)
+                    context.setSeverity("error")
+                    context.setMensaje("Este email ya esta en uso");
+                    setEmail("")
+                }).catch((e) => { //necesito que cuando se busque por email, me responda con el error y el codigo de respuesta
+                    // if (codigo de respuesta es 200ok entonces return true sino retorne false 
+                    //     y muestre que en este momento no se puede registrar un cliente, que 
+                    //     intente mas tarde)
+                    return true
+                })
+
+
         } else if (email !== "") {
             context.setOpen(true)
             context.setSeverity("error")
@@ -66,36 +97,41 @@ function Singup() {
         }
     }
 
+    function verificarContraseña() {
+        if (contraseña !== "") {
+            return true
+        } else {
+            context.setOpen(true)
+            context.setSeverity("error")
+            context.setMensaje("Debes ingresar la contraseña");
+            return false
+        }
+    }
+
     function handleclick(e) {
         e.preventDefault();
 
-        if (verificarName() && verificarContact() && verificarPassword() && verificarEmail()) {
+        if (verificarNombre() && verificarApellido() && verificarTelefono() && verificarDireccion() && verificarEmail() && verificarContraseña()) {
 
             const cliente = {
-                fullname: name,
-                contact: contact,
+                nombre: nombre,
+                apellido: apellido,
+                telefono: telefono,
+                direccion: direccion,
                 email: email,
-                password: password,
+                password: contraseña,
                 admin: "Off"
             }
-            axios.get(`https://ecommerceback-dlmy.onrender.com/api/client/${email}/`)
+
+            axios.post(`https://ecommerceback-dlmy.onrender.com/api/client/`, cliente)
                 .then(() => {
                     context.setOpen(true)
+                    context.setSeverity("success")
+                    context.setMensaje("Usuario registrado con exito")
+                }).catch((e) => {
+                    context.setOpen(true)
                     context.setSeverity("error")
-                    context.setMensaje("Este email ya esta en uso");
-                })
-                .catch((e) => {
-                    axios.post(`https://ecommerceback-dlmy.onrender.com/api/client/`, cliente)
-                        .then(() => {
-                            context.setOpen(true)
-                            context.setSeverity("success")
-                            context.setMensaje("Usuario registrado con exito")
-                        }).catch((e) => {
-                            context.setOpen(true)
-                            context.setSeverity("error")
-                            context.setMensaje("Email invalido");
-
-                        })
+                    context.setMensaje("Email invalido");
                 })
         }
 
@@ -126,7 +162,7 @@ function Singup() {
                                 placeholder="Nombre: "
                                 className="w-full bg-primary outline-none text-secondary"
                                 type="text"
-                                onChange={(e) => { setName(e.target.value) }}
+                                onChange={(e) => { setNombre(e.target.value) }}
                             />
                         </div>
 
@@ -146,7 +182,7 @@ function Singup() {
                                 placeholder="Nombre completo: "
                                 className="w-full bg-primary outline-none text-secondary"
                                 type="text"
-                                onChange={(e) => { setName(e.target.value) }}
+                                onChange={(e) => { setApellido(e.target.value) }}
                             />
                         </div>
 
@@ -164,7 +200,25 @@ function Singup() {
                                 placeholder="Telefono: "
                                 className="w-full bg-primary outline-none text-secondary"
                                 type="number"
-                                onChange={(e) => { setContact(e.target.value) }}
+                                onChange={(e) => { setTelefono(e.target.value) }}
+                            />
+                        </div>
+
+                        <div className="flex flex-row h-10 bg-primary justify-center items-center px-3 rounded-lg shadow-lg shadow-black/30 hover:scale-105 ease-out duration-200">
+                            <svg className='fill-secondary'
+                                xmlns="http://www.w3.org/2000/svg"
+                                width={24}
+                                height={24}
+                                fill="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path d="m20.487 17.14-4.065-3.696a1.001 1.001 0 0 0-1.391.043l-2.393 2.461c-.576-.11-1.734-.471-2.926-1.66-1.192-1.193-1.553-2.354-1.66-2.926l2.459-2.394a1 1 0 0 0 .043-1.391L6.859 3.513a1 1 0 0 0-1.391-.087l-2.17 1.861a1 1 0 0 0-.29.649c-.015.25-.301 6.172 4.291 10.766C11.305 20.707 16.323 21 17.705 21c.202 0 .326-.006.359-.008a.992.992 0 0 0 .648-.291l1.86-2.171a.997.997 0 0 0-.085-1.39z"></path>
+                            </svg>
+                            <input
+                                placeholder="Direccion: "
+                                className="w-full bg-primary outline-none text-secondary"
+                                type="number"
+                                onChange={(e) => { setDireccion(e.target.value) }}
                             />
                         </div>
 
@@ -204,7 +258,7 @@ function Singup() {
                                 placeholder="Contraseña: "
                                 className="w-full bg-primary outline-none text-secondary"
                                 type="password"
-                                onChange={(e) => { setPassword(e.target.value) }}
+                                onChange={(e) => { setContraseña(e.target.value) }}
                             />
                         </div>
                     </div>

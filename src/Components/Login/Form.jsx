@@ -5,13 +5,15 @@ import Usuario from './Iconousuario';
 import Iconocontra from './Iconocontra';
 import Alerta from './Alerta';
 import { Context } from '../../Context/main'
+import Loader from './Loader';
 
 
 function Form() {
 	const navigate = useNavigate();
 	const context = useContext(Context)
 	const [email, setEmail] = useState("");
-	const [password, setPassword] = useState("");
+	const [contraseña, setContraseña] = useState("");
+	const [cargando, setCargando] = useState(false)
 
 	function Navegar(pagina) {
 		context.setOpen(false)
@@ -20,14 +22,14 @@ function Form() {
 
 	function handleClick(e) {
 		e.preventDefault();
-
+		setCargando(true)
 		axios
 			.post(`https://ecommerceback-dlmy.onrender.com/api/login/`, {
 				email: email,
-				password: password
+				password: contraseña
 			})
 			.then((response) => {
-				response.data.password = password
+				response.data.password = contraseña
 				sessionStorage.setItem("cliente", JSON.stringify(response.data));
 				Navegar("/home")
 			})
@@ -41,12 +43,15 @@ function Form() {
 					context.setSeverity("error")
 					context.setMensaje("El usuario no esta registrado");
 				}
-			});
+			}).finally(() => {
+				setCargando(false)
+			})
 	}
 
 
 	return (
 		<>
+
 			<div className="flex flex-row h-screen w-full items-center justify-center p-8">
 				<div className='h-16 w-2/5 fixed top-5 justify-center'>
 					<Alerta />
@@ -70,7 +75,7 @@ function Form() {
 							placeholder="Contraseña:"
 							className="w-full bg-primary outline-none text-secondary"
 							type="password"
-							onChange={(e) => { setPassword(e.target.value) }}
+							onChange={(e) => { setContraseña(e.target.value) }}
 						/>
 					</div>
 					<div className="flex w-3/5 justify-end ">
@@ -81,6 +86,7 @@ function Form() {
 							Olvidaste tu contraseña?
 						</p>
 					</div>
+
 					<div className="flex flex-row w-3/4 items-center justify-center gap-5">
 						<button className="w-1/2 text-primary text-center bg-secondary rounded-xl lg:text-xl text-lg p-3 mt-8  hover:scale-105 ease-out duration-200" onClick={handleClick}>
 							Iniciar
@@ -89,6 +95,7 @@ function Form() {
 							Registrarse
 						</button>
 					</div>
+					{cargando && <Loader />}
 
 				</form>
 				<div className='hidden sm:w-1/2 sm:flex sm:justify-center sm:flex-col sm:items-center'>

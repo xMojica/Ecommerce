@@ -12,9 +12,7 @@ function Alerta() {
     };
 
     return (
-
         <>
-
             {
                 context.open && (
                     <div className="ease-in-out duration-500">
@@ -25,7 +23,6 @@ function Alerta() {
                 )
             }
         </>
-
     )
 }
 
